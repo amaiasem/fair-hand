@@ -5,11 +5,11 @@ function userRouter() {
   const router = Router();
 
   router
-    .route('/users')
-    .get(userController)
-    .get(userController)
-    .put(userController)
-    .post(userController);
+    .route('/')
+    .post(userController.createUser)
+    .get(userController.getUser)
+    .put(userController.updateUser)
+    .delete(userController.deleteUser);
 
   return router;
 }

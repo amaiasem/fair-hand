@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const { connect } = require('mongoose');
+const userRouter = require('./src/router/userRouter');
 
 require('dotenv').config();
 
@@ -16,6 +17,6 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/');
+app.use('/user', userRouter);
 
 app.listen(port, () => debug(`Server is running in port ${chalk.red(port)}`));
