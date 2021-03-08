@@ -13,12 +13,12 @@ const shopSchema = new Schema({
   coverImage: String,
   logoImage: String,
   type: [String],
-  NewIn: {
+  NewIn: [{
     productName: String,
     productImage: String,
     price: Number,
     url: String
-  }
+  }]
 });
 
 module.exports = model('Shop', shopSchema);

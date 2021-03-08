@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const { connect } = require('mongoose');
 const userRouter = require('./src/router/userRouter');
 const shopRouter = require('./src/router/shopRouter');
+const reviewsRouter = require('./src/router/reviewsRouter');
 
 require('dotenv').config();
 
@@ -20,5 +21,6 @@ app.use(express.json());
 
 app.use('/user', userRouter);
 app.use('/shops', shopRouter);
+app.use('/reviews', reviewsRouter);
 
 app.listen(port, () => debug(`Server is running in port ${chalk.red(port)}`));
