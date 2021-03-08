@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-const { findByIdAndUpdate } = require('../models/userModel');
 const User = require('../models/userModel');
 
 function createUser(req, res) {
