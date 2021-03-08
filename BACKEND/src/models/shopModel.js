@@ -4,8 +4,8 @@ const shopSchema = new Schema({
   shopName: String,
   address: String,
   latlong: {
-    lat: String,
-    long: String
+    lat: Number,
+    long: Number
   },
   schedule: String,
   website: String,
