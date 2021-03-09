@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('window')
 
-export const COLORS = {
+export const COLOR = {
   orange: '#FF7F50',
   black: '#262322',
   grey: '#5B5B5B',
@@ -36,6 +36,6 @@ export const FONTS = {
   tagText: { fontFamily: 'Montserrat-Medium', fontSize: SIZES.tagText }
 }
 
-const appTheme = { COLORS, SIZES, FONTS }
+const appTheme = { COLOR, SIZES, FONTS }
 
 export default appTheme
