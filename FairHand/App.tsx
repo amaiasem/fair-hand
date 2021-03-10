@@ -1,23 +1,24 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+// import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
+import TabNavigator from './src/navigation/TabNavigator'
 
-import { AppCover, Home } from './src/screens'
-
-const Stack = createStackNavigator()
+// const Stack = createStackNavigator()
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <TabNavigator/>
+      {/* <Stack.Navigator
         screenOptions={{
           headerShown: false
         }}
-        initialRouteName={'AppCover'}
+        initialRouteName={'Home'}
       >
-        <Stack.Screen name='Home' component={Home}/>
+
+        <Stack.Screen name='Home' component={Tabs}/>
         <Stack.Screen name='AppCover' component={AppCover}/>
-      </Stack.Navigator>
+      </Stack.Navigator> */}
     </NavigationContainer>
   )
 }
