@@ -1,25 +1,25 @@
-import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FF7F50',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  text: {
-    color: 'white',
-    fontSize: 24
-  }
-})
+import { AppCover, Home } from './src/screens'
 
-export default function App () {
+const Stack = createStackNavigator()
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hey there! Welcome to FAIR HAND!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+        initialRouteName={'AppCover'}
+      >
+        <Stack.Screen name='Home' component={Home}/>
+        <Stack.Screen name='AppCover' component={AppCover}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
+
+export default App
