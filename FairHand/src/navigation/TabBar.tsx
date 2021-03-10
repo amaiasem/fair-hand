@@ -37,8 +37,7 @@ const TabBar = ({ state, navigation }) => {
                 {
                     routes.map((route, index) => (
                         <Tab
-                        tab={route}
-                        // icon={}
+                        icon={route.params.icon}
                         onPress={() => handlePress(route.name, index)}
                         key={route.key}/>
                     ))
