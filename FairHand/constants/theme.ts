@@ -6,13 +6,14 @@ export const COLOR = {
   black: '#262322',
   grey: '#5B5B5B',
   lightgrey: '#A1A1A1',
-  white: '#fff'
+  white: '#fff',
+  whiteTransparency: '#FFFFFF50'
 }
 
 export const SIZES = {
 
   base: 8,
-  h1: 24,
+  h1: 20,
   h2: 18,
   p12: 12,
   p14: 14,
@@ -27,15 +28,6 @@ export const SIZES = {
 
 }
 
-export const FONTS = {
-  h1: { fontFamily: 'Montserrat-SemiBold', fontSize: SIZES.h1 },
-  h2: { fontFamily: 'Montserrat-SemiBold', fontSize: SIZES.h2 },
-  p12: { fontFamily: 'Montserrat-Regular', fontSize: SIZES.p12 },
-  p14: { fontFamily: 'Montserrat-Regular', fontSize: SIZES.p14 },
-  cardTitle: { fontFamily: 'Montserrat-SemiBold', fontSize: SIZES.p14 },
-  tagText: { fontFamily: 'Montserrat-Medium', fontSize: SIZES.tagText }
-}
-
-const appTheme = { COLOR, SIZES, FONTS }
+const appTheme = { COLOR, SIZES }
 
 export default appTheme
