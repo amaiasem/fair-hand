@@ -1,10 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { COLOR, SIZES, images } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
-    // paddingTop: 20,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
 
 const AppCover = () => {
   return (
-    <SafeAreaView style = {styles.container}>
+    <View style = {styles.container}>
     <Image style = {styles.cover}
       source= {images.appCover}
     ></Image>
@@ -62,7 +61,7 @@ const AppCover = () => {
       <Text style={styles.buttonText}>SIGN UP</Text>
     </TouchableOpacity>
     </View>
-  </SafeAreaView>
+  </View>
   )
 }
 

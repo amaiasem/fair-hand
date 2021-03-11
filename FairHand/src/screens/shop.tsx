@@ -1,11 +1,21 @@
 import React from 'react'
-import { Text, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import renderHeader from './Header'
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 30,
+    flex: 1
+  }
+
+})
 
 const Shop = () => {
   return (
-        <SafeAreaView>
+        <View style = {styles.container}>
+          {renderHeader()}
             <Text>Welcome to Shop Detail!</Text>
-        </SafeAreaView>
+        </View>
   )
 }
 
