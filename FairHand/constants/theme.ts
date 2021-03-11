@@ -6,6 +6,7 @@ export const COLOR = {
   black: '#262322',
   grey: '#5B5B5B',
   lightgrey: '#A1A1A1',
+  whiteGrey: '#EDEDED',
   white: '#fff',
   whiteTransparency: '#FFFFFF50'
 }
