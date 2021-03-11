@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
 
 })
 
-const TabBar = ({ state, navigation }) => {
+const TabBar = ({ state, navigation }: any) => {
   const [selected, setSelected] = useState('Home')
   const { routes } = state
 
-  const handlePress = (activeTab, index) => {
+  const handlePress = (activeTab: string, index: number) => {
     if (state.index !== index) {
       setSelected(activeTab)
       navigation.navigate(activeTab)
@@ -35,7 +35,7 @@ const TabBar = ({ state, navigation }) => {
         <View style={styles.wrapper}>
             <View style={styles.container}>
                 {
-                    routes.map((route, index) => (
+                    routes.map((route: any, index: number) => (
                         <Tab
                         icon={route.params.icon}
                         onPress={() => handlePress(route.name, index)}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
 const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Tab = ({ onPress, icon }) => {
+const Tab = ({ onPress, icon }: any) => {
   return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
             {icon && <AntDesign name={icon} size={24} color="black" />}
