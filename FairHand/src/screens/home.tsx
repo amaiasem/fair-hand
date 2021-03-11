@@ -71,8 +71,9 @@ const styles = StyleSheet.create({
     fontSize: SIZES.p14
   },
   containerShops: {
-    paddingBottom: 30,
-    marginTop: 140
+    paddingBottom: 200,
+    marginTop: 140,
+    marginBottom: 50
   },
   shopCard: {
     flex: 1,
@@ -116,7 +117,8 @@ const styles = StyleSheet.create({
   },
   schedule: {
     fontSize: SIZES.p14,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    color: COLOR.lightgrey
   }
 })
 
@@ -158,6 +160,7 @@ const Home = () => {
     <TouchableOpacity style={styles.shopCard}>
       <View style= {styles.containerImage}>
           <Image
+            key = {item._id}
             style= {styles.shopImage}
             source={{ uri: item.logoImage }}
           ></Image>
