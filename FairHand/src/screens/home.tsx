@@ -4,6 +4,7 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import renderHeader from './Header'
 import { AntDesign } from '@expo/vector-icons'
 import { COLOR, SIZES, DATA, SHADOW2 } from '../../constants'
+// import TabNavigator from '../navigation/TabNavigator'
 
 const styles = StyleSheet.create({
   container: {
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
 function renderSearch () {
   const [value, onChangeText] = useState('')
   return (
-    <View style={styles.searchTabs}>
+  <View style={styles.searchTabs}>
     <View style={styles.containerSearch}>
       <View style={styles.searchIcon}>
         <AntDesign name="search1" size={24} color={COLOR.lightgrey} />
@@ -183,6 +184,7 @@ const Home = () => {
         keyExtractor={item => item._id}
         style={styles.containerShops}
       />
+      {/* <TabNavigator/> */}
     </View>
   )
 }
