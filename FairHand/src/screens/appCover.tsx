@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: COLOR.white,
-    fontSize: SIZES.h1,
+    fontSize: SIZES.buttonText,
     fontWeight: '700'
   }
 })
@@ -60,7 +60,10 @@ const AppCover = ({ navigation }: any) => {
       >
         <Text style={styles.buttonText}>LOGIN</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button }>
+      <TouchableOpacity
+      style={styles.button }
+      onPress = {() => navigation.navigate('Register')}
+      >
         <Text style={styles.buttonText}>SIGN UP</Text>
       </TouchableOpacity>
     </View>

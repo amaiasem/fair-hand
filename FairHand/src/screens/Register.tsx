@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: SIZES.h1,
     fontWeight: '700',
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 80
   },
   input: {
     width: SIZES.width * 0.85,
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Login = ({ navigation }:any) => {
+const Register = ({ navigation }:any) => {
   const [value, onChangeText] = useState('')
   return (
     <View style={styles.container}>
@@ -76,7 +77,19 @@ const Login = ({ navigation }:any) => {
         source= {images.orangeLogo}
       ></Image>
       <View style={styles.loginForm}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Create your account</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => onChangeText(text)}
+          placeholder='Name'
+          value = {value}
+        ></TextInput>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => onChangeText(text)}
+          placeholder='Surname'
+          value = {value}
+        ></TextInput>
         <TextInput
           style={styles.input}
           onChangeText={text => onChangeText(text)}
@@ -90,11 +103,11 @@ const Login = ({ navigation }:any) => {
           value = {value}
         ></TextInput>
         <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>SIGN IN</Text>
+            <Text style={styles.buttonText}>SUBMIT</Text>
         </TouchableOpacity>
       </View>
     </View>
   )
 }
 
-export default Login
+export default Register
