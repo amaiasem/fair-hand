@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import { reviewReducer } from '../reducers/reviewReducer'
-import { shopReducer } from '../reducers/shopReducer'
-import { userReducer } from '../reducers/userReducer'
+// import reviewReducer from './reviewReducer'
+import shopReducer from './shopReducer'
+// import userReducer from './userReducer'
 
 const rootReducer = combineReducers({
-  userReducer,
-  shopReducer,
-  reviewReducer
+  // userReducer,
+  shopReducer
+  // reviewReducer
 })
 
 export default rootReducer

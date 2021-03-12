@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import renderHeader from './Header'
 import { AntDesign } from '@expo/vector-icons'
-import { COLOR, SIZES, DATA, SHADOW2 } from '../../constants'
+import { COLOR, SIZES, SHADOW2 } from '../../constants'
+import loadAllShops from '../redux/actions/fairHandActionCreators'
 
 const styles = StyleSheet.create({
   container: {
@@ -156,7 +159,12 @@ function renderSearch () {
   )
 }
 
-const Home = () => {
+const Home = ({ shops, action }: any) => {
+  console.log(shops.length)
+  useEffect(() => {
+    action.loadAllShops()
+  }, [])
+
   const renderItem = ({ item }: any) => (
     <TouchableOpacity style={styles.shopCard}>
       <View style= {styles.containerImage}>
@@ -179,7 +187,7 @@ const Home = () => {
       {renderHeader()}
       {renderSearch()}
       <FlatList
-        data={DATA}
+        data={shops}
         renderItem={renderItem}
         keyExtractor={item => item._id}
         style={styles.containerShops}
@@ -188,4 +196,17 @@ const Home = () => {
   )
 }
 
-export default Home
+function mapStateToProps (state: any) {
+  console.log(state)
+  return {
+    shops: state.shopReducer.shops
+  }
+}
+
+function mapDispatchToProps (dispatch: any) {
+  return {
+    action: bindActionCreators({ loadAllShops }, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
