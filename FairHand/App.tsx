@@ -3,6 +3,8 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { AppCover, Login, Register } from './src/screens'
+import TabNavigator from './src/navigation/TabNavigator'
+
 const Stack = createStackNavigator()
 
 const App = () => {
@@ -17,6 +19,7 @@ const App = () => {
         <Stack.Screen name='AppCover' component={AppCover}/>
         <Stack.Screen name='Login' component={Login}/>
         <Stack.Screen name='Register' component={Register}/>
+        <Stack.Screen name='TabNavigator' component={TabNavigator}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

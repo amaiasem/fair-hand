@@ -4,7 +4,6 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import renderHeader from './Header'
 import { AntDesign } from '@expo/vector-icons'
 import { COLOR, SIZES, DATA, SHADOW2 } from '../../constants'
-// import TabNavigator from '../navigation/TabNavigator'
 
 const styles = StyleSheet.create({
   container: {
@@ -136,6 +135,7 @@ function renderSearch () {
           onChangeText={text => onChangeText(text)}
           placeholder='Find a shop'
           value={value}
+          testID='input-shop'
           />
     </View>
     <View style={styles.containerTabs}>
@@ -184,7 +184,6 @@ const Home = () => {
         keyExtractor={item => item._id}
         style={styles.containerShops}
       />
-      {/* <TabNavigator/> */}
     </View>
   )
 }

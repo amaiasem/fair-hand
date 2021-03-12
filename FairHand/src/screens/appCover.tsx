@@ -55,6 +55,7 @@ const AppCover = ({ navigation }: any) => {
     ></Image>
     <View style={styles.buttonsBox}>
       <TouchableOpacity
+      testID='login-button'
       style={styles.button}
       onPress = {() => navigation.navigate('Login')}
       >

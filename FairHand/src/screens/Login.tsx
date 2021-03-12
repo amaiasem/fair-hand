@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
 })
 
 const Login = ({ navigation }:any) => {
-  const [value, onChangeText] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.goBack}>
@@ -70,6 +72,7 @@ const Login = ({ navigation }:any) => {
           size={24}
           color="black"
           onPress={() => navigation.goBack()}
+          testID='go-back'
           />
       </TouchableOpacity>
       <Image
@@ -79,17 +82,22 @@ const Login = ({ navigation }:any) => {
         <Text style={styles.title}>Login</Text>
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => setEmail(event)}
           placeholder='Email'
-          value = {value}
-        ></TextInput>
+          value = {email}
+          testID='input-email'
+          ></TextInput>
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => setPassword(event)}
           placeholder='Password'
-          value = {value}
+          value = {password}
+          testID='input-password'
         ></TextInput>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('TabNavigator')}
+        >
             <Text style={styles.buttonText}>SIGN IN</Text>
         </TouchableOpacity>
       </View>

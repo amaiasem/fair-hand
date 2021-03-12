@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { COLOR, SIZES, images } from '../../constants'
 import { TextInput } from 'react-native-gesture-handler'
+import { event } from 'react-native-reanimated'
 
 const styles = StyleSheet.create({
   container: {
@@ -61,7 +62,11 @@ const styles = StyleSheet.create({
 })
 
 const Register = ({ navigation }:any) => {
-  const [value, onChangeText] = useState('')
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.goBack}>
@@ -71,6 +76,7 @@ const Register = ({ navigation }:any) => {
           size={24}
           color="black"
           onPress={() => navigation.goBack()}
+          testID='go-back'
           />
       </TouchableOpacity>
       <Image
@@ -80,27 +86,31 @@ const Register = ({ navigation }:any) => {
         <Text style={styles.title}>Create your account</Text>
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => setName(event)}
           placeholder='Name'
-          value = {value}
-        ></TextInput>
+          value = {name}
+          testID='input-name'
+          ></TextInput>
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => setSurname(event)}
           placeholder='Surname'
-          value = {value}
-        ></TextInput>
+          value = {surname}
+          testID='input-surname'
+          ></TextInput>
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => setEmail(event)}
           placeholder='Email'
-          value = {value}
-        ></TextInput>
+          value = {email}
+          testID='input-email'
+          ></TextInput>
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => setPassword(event)}
           placeholder='Password'
-          value = {value}
+          value = {password}
+          testID='input-password'
         ></TextInput>
         <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>SUBMIT</Text>
