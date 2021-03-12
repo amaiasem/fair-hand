@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a component appCover Then should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Object {
+        "flex": 1,
+        "height": 1400.7,
+        "position": "absolute",
+        "resizeMode": "cover",
+        "right": -100,
+      }
+    }
+  />
+  <Image
+    source={1}
+    style={
+      Object {
+        "height": 208,
+        "marginTop": 100,
+        "resizeMode": "cover",
+        "width": "80%",
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 0.5,
+        "justifyContent": "flex-end",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF50",
+          "borderRadius": 25,
+          "height": 40,
+          "justifyContent": "center",
+          "marginTop": 20,
+          "opacity": 1,
+          "width": "70%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+            "fontWeight": "700",
+          }
+        }
+      >
+        LOGIN
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF50",
+          "borderRadius": 25,
+          "height": 40,
+          "justifyContent": "center",
+          "marginTop": 20,
+          "opacity": 1,
+          "width": "70%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+            "fontWeight": "700",
+          }
+        }
+      >
+        SIGN UP
+      </Text>
+    </View>
+  </View>
+</View>
+`;

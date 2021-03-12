@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native'
+import { StyleSheet, View, Image } from 'react-native'
 import { COLOR, SIZES, images, SHADOW } from '../../constants'
 
 const styles = StyleSheet.create({

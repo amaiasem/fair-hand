@@ -44,9 +44,9 @@ const styles = StyleSheet.create({
   }
 })
 
-const AppCover = () => {
+const AppCover = ({ navigation }: any) => {
   return (
-    <View style = {styles.container}>
+  <View style = {styles.container}>
     <Image style = {styles.cover}
       source= {images.appCover}
     ></Image>
@@ -54,12 +54,15 @@ const AppCover = () => {
       source = {images.whiteLogo}
     ></Image>
     <View style={styles.buttonsBox}>
-    <TouchableOpacity style={styles.button }>
-      <Text style={styles.buttonText}>LOGIN</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.button }>
-      <Text style={styles.buttonText}>SIGN UP</Text>
-    </TouchableOpacity>
+      <TouchableOpacity
+      style={styles.button}
+      onPress = {() => navigation.navigate('Login')}
+      >
+        <Text style={styles.buttonText}>LOGIN</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button }>
+        <Text style={styles.buttonText}>SIGN UP</Text>
+      </TouchableOpacity>
     </View>
   </View>
   )

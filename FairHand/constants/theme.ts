@@ -6,6 +6,7 @@ export const COLOR = {
   black: '#262322',
   grey: '#5B5B5B',
   lightgrey: '#A1A1A1',
+  whiteGrey: '#EDEDED',
   white: '#fff',
   whiteTransparency: '#FFFFFF50'
 }
@@ -40,6 +41,15 @@ export const SHADOW = {
   elevation: 4
 }
 
-const appTheme = { COLOR, SIZES, SHADOW }
+export const SHADOW2 = {
+  shadowColor: '#000',
+  borderBottomWidth: 0,
+  shadowOffset: { width: 0, height: 10 },
+  shadowOpacity: 0.2,
+  shadowRadius: 5,
+  elevation: 5
+}
+
+const appTheme = { COLOR, SIZES, SHADOW, SHADOW2 }
 
 export default appTheme
