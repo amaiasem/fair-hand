@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import renderHeader from './Header'
 import { AntDesign } from '@expo/vector-icons'
-import { COLOR, SIZES, DATA, SHADOW2 } from '../../constants'
-// import TabNavigator from '../navigation/TabNavigator'
+import { COLOR, SIZES, SHADOW2 } from '../../constants'
+import loadAllShops from '../redux/actions/fairHandActionCreators'
 
 const styles = StyleSheet.create({
   container: {
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     width: SIZES.width * 0.95,
-    height: 130,
+    height: 140,
     backgroundColor: COLOR.white,
     marginBottom: 10,
     marginRight: 5,
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 20,
+    marginRight: 5,
     marginLeft: 10
   },
   shopImage: {
@@ -124,7 +126,8 @@ const styles = StyleSheet.create({
 })
 
 function renderSearch () {
-  const [value, onChangeText] = useState('')
+  const [search, onSearch] = useState('')
+
   return (
   <View style={styles.searchTabs}>
     <View style={styles.containerSearch}>
@@ -133,9 +136,10 @@ function renderSearch () {
       </View>
         <TextInput
           style={styles.searchInput}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => onSearch(event)}
           placeholder='Find a shop'
-          value={value}
+          value={search}
+          testID='input-shop'
           />
     </View>
     <View style={styles.containerTabs}>
@@ -156,7 +160,11 @@ function renderSearch () {
   )
 }
 
-const Home = () => {
+const Home = ({ shops, action }: any) => {
+  useEffect(() => {
+    action.loadAllShops()
+  }, [])
+
   const renderItem = ({ item }: any) => (
     <TouchableOpacity style={styles.shopCard}>
       <View style= {styles.containerImage}>
@@ -179,14 +187,25 @@ const Home = () => {
       {renderHeader()}
       {renderSearch()}
       <FlatList
-        data={DATA}
+        data={shops}
         renderItem={renderItem}
         keyExtractor={item => item._id}
         style={styles.containerShops}
       />
-      {/* <TabNavigator/> */}
     </View>
   )
 }
 
-export default Home
+function mapStateToProps (state: any) {
+  return {
+    shops: state.shopReducer.shops
+  }
+}
+
+function mapDispatchToProps (dispatch: any) {
+  return {
+    action: bindActionCreators({ loadAllShops }, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
