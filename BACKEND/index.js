@@ -12,6 +12,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT;
 const DDBB = process.env.DDBB_URL;
+const { IP } = process.env;
 
 connect(DDBB, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -23,4 +24,4 @@ app.use('/user', userRouter);
 app.use('/shops', shopRouter);
 app.use('/reviews', reviewsRouter);
 
-app.listen(port, () => debug(`Server is running in port ${chalk.red(port)}`));
+app.listen(port, () => debug(`Server is running in http://${IP}:${port}`));

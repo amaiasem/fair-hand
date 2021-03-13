@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     width: SIZES.width * 0.95,
-    height: 130,
+    height: 140,
     backgroundColor: COLOR.white,
     marginBottom: 10,
     marginRight: 5,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 20,
+    marginRight: 5,
     marginLeft: 10
   },
   shopImage: {
@@ -126,7 +126,8 @@ const styles = StyleSheet.create({
 })
 
 function renderSearch () {
-  const [value, onChangeText] = useState('')
+  const [search, onSearch] = useState('')
+
   return (
   <View style={styles.searchTabs}>
     <View style={styles.containerSearch}>
@@ -135,9 +136,9 @@ function renderSearch () {
       </View>
         <TextInput
           style={styles.searchInput}
-          onChangeText={text => onChangeText(text)}
+          onChangeText={(event) => onSearch(event)}
           placeholder='Find a shop'
-          value={value}
+          value={search}
           testID='input-shop'
           />
     </View>
@@ -160,7 +161,6 @@ function renderSearch () {
 }
 
 const Home = ({ shops, action }: any) => {
-  console.log(shops.length)
   useEffect(() => {
     action.loadAllShops()
   }, [])
@@ -197,7 +197,6 @@ const Home = ({ shops, action }: any) => {
 }
 
 function mapStateToProps (state: any) {
-  console.log(state)
   return {
     shops: state.shopReducer.shops
   }
