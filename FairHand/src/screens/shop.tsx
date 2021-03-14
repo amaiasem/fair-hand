@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet, Text, View, Image, Linking, FlatList } from 'react-native'
 import { COLOR, SIZES } from '../../constants'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
 import renderHeader from './Header'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+import { getReviewsByShopName } from '../redux/actions/fairHandActionCreators'
+import { bindActionCreators } from 'redux'
 
 const styles = StyleSheet.create({
   container: {
@@ -82,12 +85,12 @@ const styles = StyleSheet.create({
     margin: 20
   },
   phoneHeart: {
-    fontSize: 30,
     color: COLOR.black,
     marginLeft: 20
   },
   newInContainer: {
-    marginLeft: 20
+    marginLeft: 20,
+    height: 280
   },
   newInTitle: {
     fontSize: SIZES.h2,
@@ -137,18 +140,38 @@ const styles = StyleSheet.create({
   buttonText: {
     color: COLOR.white,
     fontSize: SIZES.p12
+  },
+  reviewsContainer: {
+    marginTop: 15,
+    marginBottom: 20,
+    marginLeft: 40,
+    width: SIZES.width
+  },
+  reviewsTitle: {
+    fontSize: SIZES.h2,
+    marginRight: 40,
+    fontWeight: '700',
+    color: COLOR.black,
+    borderBottomWidth: 1,
+    borderBottomColor: COLOR.black
+  },
+  addReview: {
+    position: 'absolute',
+    right: 40,
+    top: 0
   }
 })
 
 // const data = DATA[0]
 
-const Shop = ({ route, navigation }: any) => {
+const Shop = ({ reviews, action, route, navigation }: any) => {
   const [shop, setShop] = useState(null)
 
   useEffect(() => {
     const { item } = route.params
     setShop(item)
-  })
+    action.getReviewsByShopName(item.shopName)
+  }, [])
 
   const renderItem = ({ item }: any) => (
     <View style={styles.newInItem}>
@@ -159,7 +182,7 @@ const Shop = ({ route, navigation }: any) => {
         <View style={styles.newInInfo}>
           <View>
             <Text style={styles.productName}>{item.productName}</Text>
-            <Text style={styles.price}>{item.price} €</Text>
+            {item.price ? <Text style={styles.price}>{item.price} €</Text> : <Text></Text>}
           </View>
           <TouchableOpacity
           onPress= {() => { Linking.openURL(item.url) }}
@@ -179,6 +202,7 @@ const Shop = ({ route, navigation }: any) => {
   return (
   <View style = {styles.container}>
     {renderHeader()}
+    <ScrollView>
     <View style={styles.shopDetail}>
       <View style={styles.containerCover}>
         <View style={styles.goBackButton}>
@@ -194,7 +218,7 @@ const Shop = ({ route, navigation }: any) => {
         <Image
           style={styles.coverImage}
           source={{ uri: shop?.coverImage }}
-        ></Image>
+          ></Image>
         <View style={styles.containerLogo}>
           <Image
           style={styles.logoImage}
@@ -211,43 +235,54 @@ const Shop = ({ route, navigation }: any) => {
         </TouchableOpacity>
         <View style={styles.containerButtons}>
           <TouchableOpacity onPress={() => Linking.openURL(`tel:${shop?.phone}`)}>
-            <AntDesign style={styles.phoneHeart} name="phone" size={24} color="black" />
+            <Ionicons style={styles.phoneHeart} name="call-outline" size={30} color="black" />
           </TouchableOpacity>
           <TouchableOpacity>
-            <AntDesign style={styles.phoneHeart} name="hearto" size={24} color="black" />
+            <AntDesign style={styles.phoneHeart} name="hearto" size={30} color="black" />
           </TouchableOpacity>
         </View>
       </View>
       <View style={styles.newInContainer}>
-      <Text style={styles.newInTitle}>New in</Text>
-          <FlatList
-            horizontal={true}
-            data={shop?.NewIn}
-            renderItem={renderItem}
-            keyExtractor={item => item.productName}
+        <Text style={styles.newInTitle}>New in</Text>
+        <FlatList
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={shop?.NewIn}
+          renderItem={renderItem}
+          keyExtractor={item => item.productName}
           ></FlatList>
       </View>
       {/* <Text>{REVIEWS[0].review}</Text>
       <View>
-        <FlatList
-        data={REVIEWS}
-        renderItem={renderReviews}
-        keyExtractor={item => item._id}
-        ></FlatList>
-      </View> */}
-    </View>
-    {/* <View style={styles.goBackButton}>
-      <Ionicons
-        style={styles.icon}
-        name="chevron-back-circle-outline"
-        size={24}
-        color="black"
-        onPress={() => navigation.goBack()}
-        testID='go-back'
-        />
+      <FlatList
+      data={REVIEWS}
+      renderItem={renderReviews}
+      keyExtractor={item => item._id}
+      ></FlatList>
     </View> */}
+      <View style={styles.reviewsContainer}>
+        <Text style={styles.reviewsTitle}>Reviews</Text>
+        <View style={styles.addReview}>
+          <AntDesign name="edit" size={24} color="black" />
+        </View>
+        {reviews[0] ? <Text>{reviews[0].review}</Text> : <Text>No reviews</Text> }
+      </View>
+    </View>
+    </ScrollView>
   </View>
   )
 }
 
-export default Shop
+function mapStateToProps (state:any) {
+  return {
+    reviews: state.reviewReducer.reviews
+  }
+}
+
+function mapDispatchToProps (dispatch: any) {
+  return {
+    action: bindActionCreators({ getReviewsByShopName }, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop)
