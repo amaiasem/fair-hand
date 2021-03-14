@@ -1,6 +1,6 @@
 const initialState = {
   // userReducer: { user: {} },
-  shopReducer: { shops: [], shop: {} }
+  shopReducer: { shops: [], shop: {}, filteredShops: [] }
   // reviewsReducer: { reviews: [] }
 
 }

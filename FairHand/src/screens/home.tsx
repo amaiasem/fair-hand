@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import renderHeader from './Header'
 import { AntDesign } from '@expo/vector-icons'
 import { COLOR, SIZES, SHADOW2 } from '../../constants'
-import loadAllShops from '../redux/actions/fairHandActionCreators'
+import loadAllShops, { filterShopsByType, filterShopsByName } from '../redux/actions/fairHandActionCreators'
 
 const styles = StyleSheet.create({
   container: {
@@ -125,8 +125,12 @@ const styles = StyleSheet.create({
   }
 })
 
-function renderSearch () {
-  const [search, onSearch] = useState('')
+function renderSearch (shops: Object[], action: any) {
+  const [search, setSearch] = useState('')
+
+  setTimeout(() => {
+    action.filterShopsByName(shops, search)
+  }, 300)
 
   return (
   <View style={styles.searchTabs}>
@@ -136,31 +140,53 @@ function renderSearch () {
       </View>
         <TextInput
           style={styles.searchInput}
-          onChangeText={(event) => onSearch(event)}
+          onChangeText={(event) => setSearch(event)}
           placeholder='Find a shop'
           value={search}
           testID='input-shop'
           />
     </View>
-    <View style={styles.containerTabs}>
-      <TouchableOpacity style={styles.tag}>
+    <ScrollView
+    style={styles.containerTabs}
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+    >
+      <TouchableOpacity
+      style={styles.tag}
+      onPress = {() => action.loadAllShops()}
+      >
        <Text>All</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.tag}>
-       <Text>Clothes</Text>
+      <TouchableOpacity
+        style={styles.tag}
+        onPress={() => action.filterShopsByType(shops, 'Clothes')}
+        >
+        <Text>Clothes</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.tag}>
-       <Text>Accessories</Text>
+      <TouchableOpacity
+        style={styles.tag}
+        onPress={() => action.filterShopsByType(shops, 'Accessories')}
+        >
+        <Text>Accessories</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.tag}>
-       <Text>Shoes</Text>
+      <TouchableOpacity
+        style={styles.tag}
+        onPress={() => action.filterShopsByType(shops, 'Shoes')}
+        >
+        <Text>Shoes</Text>
       </TouchableOpacity>
-    </View>
+      <TouchableOpacity
+        style={styles.tag}
+        onPress={() => action.filterShopsByType(shops, 'Jewelry')}
+        >
+        <Text>Jewelry</Text>
+      </TouchableOpacity>
+    </ScrollView>
   </View>
   )
 }
 
-const Home = ({ shops, action }: any) => {
+const Home = ({ shops, filteredShops, action }: any) => {
   useEffect(() => {
     action.loadAllShops()
   }, [])
@@ -185,9 +211,9 @@ const Home = ({ shops, action }: any) => {
   return (
     <View style = {styles.container}>
       {renderHeader()}
-      {renderSearch()}
+      {renderSearch(shops, action)}
       <FlatList
-        data={shops}
+        data={filteredShops}
         renderItem={renderItem}
         keyExtractor={item => item._id}
         style={styles.containerShops}
@@ -198,13 +224,14 @@ const Home = ({ shops, action }: any) => {
 
 function mapStateToProps (state: any) {
   return {
-    shops: state.shopReducer.shops
+    shops: state.shopReducer.shops,
+    filteredShops: state.shopReducer.filteredShops
   }
 }
 
 function mapDispatchToProps (dispatch: any) {
   return {
-    action: bindActionCreators({ loadAllShops }, dispatch)
+    action: bindActionCreators({ loadAllShops, filterShopsByType, filterShopsByName }, dispatch)
   }
 }
 

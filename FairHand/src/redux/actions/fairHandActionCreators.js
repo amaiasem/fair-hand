@@ -10,3 +10,21 @@ export default function loadAllShops () {
     })
   }
 }
+
+export function filterShopsByType (shops, typeClothes) {
+  const filteredShops = shops.filter(shop => shop.type.includes(typeClothes) === true)
+
+  return {
+    type: fairHandActionTypes.FILTER_SHOP_BY_TYPE,
+    data: filteredShops
+  }
+}
+
+export function filterShopsByName (shops, shopName) {
+  const filteredShops = shops.filter(shop => shop.shopName.includes(shopName) === true)
+
+  return {
+    type: fairHandActionTypes.FILTER_SHOP_BY_NAME,
+    data: filteredShops
+  }
+}

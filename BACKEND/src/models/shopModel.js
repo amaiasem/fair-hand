@@ -12,7 +12,7 @@ const shopSchema = new Schema({
   phone: Number,
   coverImage: String,
   logoImage: String,
-  type: [String],
+  type: String,
   NewIn: [{
     productName: String,
     productImage: String,
