@@ -128,9 +128,11 @@ const styles = StyleSheet.create({
 function renderSearch (shops: Object[], action: any) {
   const [search, setSearch] = useState('')
 
-  setTimeout(() => {
-    action.filterShopsByName(shops, search)
-  }, 300)
+  if (search !== '') {
+    setTimeout(() => {
+      action.filterShopsByName(shops, search)
+    }, 300)
+  }
 
   return (
   <View style={styles.searchTabs}>
@@ -147,9 +149,9 @@ function renderSearch (shops: Object[], action: any) {
           />
     </View>
     <ScrollView
-    style={styles.containerTabs}
-    horizontal={true}
-    showsHorizontalScrollIndicator={false}
+      style={styles.containerTabs}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
     >
       <TouchableOpacity
       style={styles.tag}
@@ -186,13 +188,16 @@ function renderSearch (shops: Object[], action: any) {
   )
 }
 
-const Home = ({ shops, filteredShops, action }: any) => {
+const Home = ({ shops, filteredShops, action, navigation }: any) => {
   useEffect(() => {
     action.loadAllShops()
   }, [])
 
   const renderItem = ({ item }: any) => (
-    <TouchableOpacity style={styles.shopCard}>
+    <TouchableOpacity
+    style={styles.shopCard}
+    onPress={() => navigation.navigate('Shop', { item })}
+    >
       <View style= {styles.containerImage}>
           <Image
             key = {item._id}

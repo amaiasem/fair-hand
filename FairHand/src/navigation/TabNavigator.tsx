@@ -24,7 +24,7 @@ const TabNavigator = () => {
         initialParams={{ icon: 'enviromento' }}
         />
         <Tab.Screen
-        name='Shop'
+        name='User'
         component={User}
         initialParams={{ icon: 'user' }}
         />

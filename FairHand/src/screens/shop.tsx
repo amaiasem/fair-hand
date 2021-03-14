@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Image, Linking, FlatList } from 'react-native'
-import { COLOR, SIZES, DATA } from '../../constants'
+import { COLOR, SIZES } from '../../constants'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
 import renderHeader from './Header'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   container: {
@@ -22,16 +22,15 @@ const styles = StyleSheet.create({
     height: 220,
     width: SIZES.width
   },
-  goBack: {
+  goBackButton: {
     position: 'absolute',
-    top: 0,
-    left: 0,
     width: SIZES.width,
-    padding: 20,
+    top: 0,
+    padding: 10,
     zIndex: 1
   },
   icon: {
-    fontSize: 50,
+    fontSize: 40,
     color: COLOR.white
   },
   coverImage: {
@@ -39,12 +38,20 @@ const styles = StyleSheet.create({
     height: 220,
     resizeMode: 'cover'
   },
-  logoImage: {
+  containerLogo: {
     position: 'absolute',
     width: 120,
     height: 120,
+    backgroundColor: COLOR.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 60
+  },
+  logoImage: {
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
-    borderRadius: 50
+    borderRadius: 120
   },
   shopInfo: {
     width: SIZES.width,
@@ -94,7 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     width: 160,
-    height: 240,
+    height: 235,
     marginTop: 10
   },
   newInImage: {
@@ -107,7 +114,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     width: 150,
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'flex-start'
   },
   productName: {
@@ -131,12 +138,18 @@ const styles = StyleSheet.create({
     color: COLOR.white,
     fontSize: SIZES.p12
   }
-
 })
 
-const data = DATA[0]
+// const data = DATA[0]
 
-const Shop = ({ data: any, navigation }: any) => {
+const Shop = ({ route, navigation }: any) => {
+  const [shop, setShop] = useState(null)
+
+  useEffect(() => {
+    const { item } = route.params
+    setShop(item)
+  })
+
   const renderItem = ({ item }: any) => (
     <View style={styles.newInItem}>
         <Image
@@ -144,8 +157,10 @@ const Shop = ({ data: any, navigation }: any) => {
           source={{ uri: item.productImage }}
         ></Image>
         <View style={styles.newInInfo}>
-          <Text style={styles.productName}>{item.productName}</Text>
-          <Text style={styles.price}>{item.price} €</Text>
+          <View>
+            <Text style={styles.productName}>{item.productName}</Text>
+            <Text style={styles.price}>{item.price} €</Text>
+          </View>
           <TouchableOpacity
           onPress= {() => { Linking.openURL(item.url) }}
           style={styles.newInbutton}>
@@ -155,57 +170,83 @@ const Shop = ({ data: any, navigation }: any) => {
     </View>
   )
 
+  // const renderReviews = ({ item }: any) => (
+  //   <View>
+  //     <Text>{item.review}</Text>
+  //   </View>
+  // )
+
   return (
-        <View style = {styles.container}>
-          {renderHeader()}
-          <View style={styles.shopDetail}>
-            <View style={styles.containerCover}>
-              <TouchableOpacity style={styles.goBack}>
-                <Ionicons
-                  style={styles.icon}
-                  name="chevron-back-circle-outline"
-                  size={24}
-                  color="black"
-                  onPress={() => navigation.goBack()}
-                  testID='go-back'
-                  />
-              </TouchableOpacity>
-              <Image
-              style={styles.coverImage}
-              source={{ uri: data.coverImage }}
-              ></Image>
-              <Image
-              style={styles.logoImage}
-              source={{ uri: data.logoImage }}
-              ></Image>
-            </View>
-            <View style={styles.shopInfo}>
-              <Text style={styles.title}>{data.shopName}</Text>
-              <Text style={styles.info}>{data.address}</Text>
-              <Text style={styles.info}>{data.schedule}</Text>
-              <TouchableOpacity onPress={() => Linking.openURL(data.website)}>
-              <Text style={styles.web}>{data.website}</Text>
-              </TouchableOpacity>
-              <View style={styles.containerButtons}>
-                <TouchableOpacity onPress={() => Linking.openURL(`tel:${data.phone}`)}>
-                  <AntDesign style={styles.phoneHeart} name="phone" size={24} color="black" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <AntDesign style={styles.phoneHeart} name="hearto" size={24} color="black" />
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.newInContainer}>
-            <Text style={styles.newInTitle}>New in</Text>
-                <FlatList
-                  horizontal={true}
-                  data={data.NewIn}
-                  renderItem={renderItem}
-                  keyExtractor={item => item.productName}
-                ></FlatList>
-            </View>
-          </View>
+  <View style = {styles.container}>
+    {renderHeader()}
+    <View style={styles.shopDetail}>
+      <View style={styles.containerCover}>
+        <View style={styles.goBackButton}>
+            <Ionicons
+              style={styles.icon}
+              name="chevron-back-circle-outline"
+              size={24}
+              color="black"
+              onPress={() => navigation.goBack()}
+              testID='go-back'
+              />
         </View>
+        <Image
+          style={styles.coverImage}
+          source={{ uri: shop?.coverImage }}
+        ></Image>
+        <View style={styles.containerLogo}>
+          <Image
+          style={styles.logoImage}
+          source={{ uri: shop?.logoImage }}
+          ></Image>
+        </View>
+      </View>
+      <View style={styles.shopInfo}>
+        <Text style={styles.title}>{shop?.shopName}</Text>
+        <Text style={styles.info}>{shop?.address}</Text>
+        <Text style={styles.info}>{shop?.schedule}</Text>
+        <TouchableOpacity onPress={() => Linking.openURL(shop?.website)}>
+        <Text style={styles.web}>{shop?.website}</Text>
+        </TouchableOpacity>
+        <View style={styles.containerButtons}>
+          <TouchableOpacity onPress={() => Linking.openURL(`tel:${shop?.phone}`)}>
+            <AntDesign style={styles.phoneHeart} name="phone" size={24} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <AntDesign style={styles.phoneHeart} name="hearto" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.newInContainer}>
+      <Text style={styles.newInTitle}>New in</Text>
+          <FlatList
+            horizontal={true}
+            data={shop?.NewIn}
+            renderItem={renderItem}
+            keyExtractor={item => item.productName}
+          ></FlatList>
+      </View>
+      {/* <Text>{REVIEWS[0].review}</Text>
+      <View>
+        <FlatList
+        data={REVIEWS}
+        renderItem={renderReviews}
+        keyExtractor={item => item._id}
+        ></FlatList>
+      </View> */}
+    </View>
+    {/* <View style={styles.goBackButton}>
+      <Ionicons
+        style={styles.icon}
+        name="chevron-back-circle-outline"
+        size={24}
+        color="black"
+        onPress={() => navigation.goBack()}
+        testID='go-back'
+        />
+    </View> */}
+  </View>
   )
 }
 
