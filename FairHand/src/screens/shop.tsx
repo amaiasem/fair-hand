@@ -144,25 +144,47 @@ const styles = StyleSheet.create({
   reviewsContainer: {
     marginTop: 15,
     marginBottom: 20,
-    marginLeft: 40,
-    width: SIZES.width
+    marginLeft: 20,
+    marginRight: 20
   },
   reviewsTitle: {
     fontSize: SIZES.h2,
-    marginRight: 40,
     fontWeight: '700',
     color: COLOR.black,
     borderBottomWidth: 1,
-    borderBottomColor: COLOR.black
+    borderBottomColor: COLOR.black,
+    marginBottom: 20
   },
   addReview: {
     position: 'absolute',
-    right: 40,
+    right: 0,
     top: 0
+  },
+  reviewItem: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  reviewImage: {
+    height: 40,
+    width: 40,
+    marginTop: 5,
+    borderRadius: SIZES.buttonRadius
+  },
+  reviewInfo: {
+    marginLeft: 15,
+    marginBottom: 10,
+    width: '85%'
+  },
+  userNameReview: {
+    fontWeight: '700',
+    fontSize: SIZES.p16
+  },
+  review: {
+    fontSize: SIZES.p16
   }
 })
-
-// const data = DATA[0]
 
 const Shop = ({ reviews, action, route, navigation }: any) => {
   const [shop, setShop] = useState(null)
@@ -193,11 +215,15 @@ const Shop = ({ reviews, action, route, navigation }: any) => {
     </View>
   )
 
-  // const renderReviews = ({ item }: any) => (
-  //   <View>
-  //     <Text>{item.review}</Text>
-  //   </View>
-  // )
+  const renderReviews = ({ item }: any) => (
+    <View style={styles.reviewItem}>
+      <Image style={styles.reviewImage} source={{ uri: item.image }}></Image>
+      <View style={styles.reviewInfo}>
+        <Text style={styles.userNameReview}>{item.userName}</Text>
+        <Text style={styles.review}>{item.review}</Text>
+      </View>
+    </View>
+  )
 
   return (
   <View style = {styles.container}>
@@ -235,10 +261,10 @@ const Shop = ({ reviews, action, route, navigation }: any) => {
         </TouchableOpacity>
         <View style={styles.containerButtons}>
           <TouchableOpacity onPress={() => Linking.openURL(`tel:${shop?.phone}`)}>
-            <Ionicons style={styles.phoneHeart} name="call-outline" size={30} color="black" />
+            <Ionicons style={styles.phoneHeart} name="call-outline" size={25} color="black" />
           </TouchableOpacity>
           <TouchableOpacity>
-            <AntDesign style={styles.phoneHeart} name="hearto" size={30} color="black" />
+            <AntDesign style={styles.phoneHeart} name="hearto" size={25} color="black" />
           </TouchableOpacity>
         </View>
       </View>
@@ -249,23 +275,23 @@ const Shop = ({ reviews, action, route, navigation }: any) => {
           showsHorizontalScrollIndicator={false}
           data={shop?.NewIn}
           renderItem={renderItem}
-          keyExtractor={item => item.productName}
+          keyExtractor={item => item._id}
           ></FlatList>
       </View>
-      {/* <Text>{REVIEWS[0].review}</Text>
-      <View>
-      <FlatList
-      data={REVIEWS}
-      renderItem={renderReviews}
-      keyExtractor={item => item._id}
-      ></FlatList>
-    </View> */}
       <View style={styles.reviewsContainer}>
         <Text style={styles.reviewsTitle}>Reviews</Text>
         <View style={styles.addReview}>
           <AntDesign name="edit" size={24} color="black" />
         </View>
-        {reviews[0] ? <Text>{reviews[0].review}</Text> : <Text>No reviews</Text> }
+        {reviews
+          ? <FlatList
+           data={reviews}
+           renderItem={renderReviews}
+           keyExtractor={item => item._id}
+          //  style={styles.listReviews}
+           ></FlatList>
+          : <Text>There are no reviews</Text>
+        }
       </View>
     </View>
     </ScrollView>

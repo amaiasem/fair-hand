@@ -6,8 +6,8 @@ function reviewsRouter() {
 
   router
     .route('/')
-    .get(reviewsController.getReviews)
-    // .get(reviewsController.getAllReviews)
+    .get(reviewsController.getAllReviews)
+    .get(reviewsController.getReviewsByName)
     .post(reviewsController.createReview)
     .delete(reviewsController.deleteReview);
 
