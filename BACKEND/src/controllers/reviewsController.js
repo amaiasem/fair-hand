@@ -27,7 +27,7 @@ async function getAllReviews(req, res) {
 }
 
 async function getReviewsByName(req, res) {
-  const query = { shopName: req.body.shopName } || { userName: req.body.userName };
+  const query = { shopName: req.params.shopName } || { userName: req.params.userName };
   const shopReviews = await Review.find(query).exec();
 
   try {

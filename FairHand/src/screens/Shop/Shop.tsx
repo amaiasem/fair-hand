@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, Text, View, Image, Linking, FlatList } from 'react-native'
-import { COLOR, SIZES } from '../../constants'
+import { COLOR, SIZES } from '../../../constants'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
-import renderHeader from './Header'
+import renderHeader from '../../Components/header/Header'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
-import { getReviewsByShopName } from '../redux/actions/fairHandActionCreators'
+import { getReviewsByShopName } from '../../redux/actions/fairHandActionCreators'
 import { bindActionCreators } from 'redux'
 
 const styles = StyleSheet.create({

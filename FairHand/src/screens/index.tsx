@@ -1,9 +1,9 @@
-import Home from './Home'
-import Maps from './Map'
-import Login from './Login'
-import Shop from './Shop'
-import AppCover from './appCover'
-import Register from './Register'
+import Home from './Home/Home'
+import Maps from '../screens/Map/Map'
+import Login from './Login/Login'
+import Shop from './Shop/Shop'
+import AppCover from './appCover/appCover'
+import Register from '../screens/Register/Register'
 
 export {
   Home,

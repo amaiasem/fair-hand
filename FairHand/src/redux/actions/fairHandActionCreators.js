@@ -35,11 +35,7 @@ export function filterShopsByName (shops, shopName) {
 
 export function getReviewsByShopName (searchShop) {
   return async function fetchInfo (dispatch) {
-    const { data } = await axios('http://192.168.0.41:5000/reviews', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ shopName: searchShop })
-    })
+    const { data } = await axios.get(`http://192.168.0.41:5000/reviews/shopName/${searchShop}`)
     dispatch({
       type: fairHandActionTypes.GET_REVIEWS_BY_SHOP_NAME,
       data

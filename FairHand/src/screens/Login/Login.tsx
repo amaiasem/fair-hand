@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { COLOR, SIZES, images } from '../../constants'
+import { COLOR, SIZES, images } from '../../../constants'
 import { TextInput } from 'react-native-gesture-handler'
-import { event } from 'react-native-reanimated'
 
 const styles = StyleSheet.create({
   container: {
@@ -33,8 +32,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: SIZES.h1,
     fontWeight: '700',
-    marginBottom: 20,
-    marginTop: 80
+    marginBottom: 20
   },
   input: {
     width: SIZES.width * 0.85,
@@ -61,9 +59,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Register = ({ navigation }:any) => {
-  const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
+const Login = ({ navigation }:any) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -83,21 +79,7 @@ const Register = ({ navigation }:any) => {
         source= {images.orangeLogo}
       ></Image>
       <View style={styles.loginForm}>
-        <Text style={styles.title}>Create your account</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(event) => setName(event)}
-          placeholder='Name'
-          value = {name}
-          testID='input-name'
-          ></TextInput>
-        <TextInput
-          style={styles.input}
-          onChangeText={(event) => setSurname(event)}
-          placeholder='Surname'
-          value = {surname}
-          testID='input-surname'
-          ></TextInput>
+        <Text style={styles.title}>Login</Text>
         <TextInput
           style={styles.input}
           onChangeText={(event) => setEmail(event)}
@@ -112,12 +94,15 @@ const Register = ({ navigation }:any) => {
           value = {password}
           testID='input-password'
         ></TextInput>
-        <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>SUBMIT</Text>
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('TabNavigator')}
+        >
+            <Text style={styles.buttonText}>SIGN IN</Text>
         </TouchableOpacity>
       </View>
     </View>
   )
 }
 
-export default Register
+export default Login

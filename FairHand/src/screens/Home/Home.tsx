@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
-import renderHeader from './Header'
+import renderHeader from '../../Components/header/Header'
 import { AntDesign } from '@expo/vector-icons'
-import { COLOR, SIZES, SHADOW2 } from '../../constants'
-import loadAllShops, { filterShopsByType, filterShopsByName } from '../redux/actions/fairHandActionCreators'
+import { COLOR, SIZES, SHADOW2 } from '../../../constants'
+import loadAllShops, { filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 
 const styles = StyleSheet.create({
   container: {
@@ -218,7 +218,7 @@ const Home = ({ shops, filteredShops, action, navigation }: any) => {
       {renderHeader()}
       {renderSearch(shops, action)}
       <FlatList
-        data={filteredShops || shops}
+        data={filteredShops}
         renderItem={renderItem}
         keyExtractor={item => item._id}
         style={styles.containerShops}

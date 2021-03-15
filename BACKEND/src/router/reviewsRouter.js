@@ -7,9 +7,16 @@ function reviewsRouter() {
   router
     .route('/')
     .get(reviewsController.getAllReviews)
-    .get(reviewsController.getReviewsByName)
     .post(reviewsController.createReview)
     .delete(reviewsController.deleteReview);
+
+  router
+    .route('/shopName/:shopName')
+    .get(reviewsController.getReviewsByName);
+
+  router
+    .route('/userName/:userName')
+    .get(reviewsController.getReviewsByName);
 
   return router;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import renderHeader from './Header'
-import { COLOR, SIZES, mockUser } from '../../constants'
+import renderHeader from '../../Components/header/Header'
+import { COLOR, SIZES, mockUser } from '../../../constants'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
