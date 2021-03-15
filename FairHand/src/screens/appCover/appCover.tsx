@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import { COLOR, SIZES, images } from '../../constants'
+import { COLOR, SIZES, images } from '../../../constants'
 
 const styles = StyleSheet.create({
   container: {

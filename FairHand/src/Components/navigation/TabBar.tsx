@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import Tab from './Tab'
-import { COLOR, SHADOW } from '../../constants'
+import { COLOR, SHADOW } from '../../../constants'
 
 const styles = StyleSheet.create({
   wrapper: {

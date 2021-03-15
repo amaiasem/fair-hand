@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Image } from 'react-native'
-import { COLOR, SIZES, images, SHADOW } from '../../constants'
+import { COLOR, SIZES, images, SHADOW } from '../../../constants'
 
 const styles = StyleSheet.create({
   headerBox: {

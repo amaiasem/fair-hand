@@ -1,6 +1,8 @@
 import axios from 'axios'
 import fairHandActionTypes from './fairHandActionTypes'
 
+// Shop actions
+
 export default function loadAllShops () {
   return async function fetchInfo (dispatch) {
     const { data } = await axios('http://192.168.0.41:5000/shops')
@@ -26,5 +28,17 @@ export function filterShopsByName (shops, shopName) {
   return {
     type: fairHandActionTypes.FILTER_SHOP_BY_NAME,
     data: filteredShops
+  }
+}
+
+// Reviews actions
+
+export function getReviewsByShopName (searchShop) {
+  return async function fetchInfo (dispatch) {
+    const { data } = await axios.get(`http://192.168.0.41:5000/reviews/shopName/${searchShop}`)
+    dispatch({
+      type: fairHandActionTypes.GET_REVIEWS_BY_SHOP_NAME,
+      data
+    })
   }
 }

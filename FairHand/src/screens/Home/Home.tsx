@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
-import renderHeader from './Header'
+import renderHeader from '../../Components/header/Header'
 import { AntDesign } from '@expo/vector-icons'
-import { COLOR, SIZES, SHADOW2 } from '../../constants'
-import loadAllShops, { filterShopsByType, filterShopsByName } from '../redux/actions/fairHandActionCreators'
+import { COLOR, SIZES, SHADOW2 } from '../../../constants'
+import loadAllShops, { filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 
 const styles = StyleSheet.create({
   container: {
@@ -128,9 +128,11 @@ const styles = StyleSheet.create({
 function renderSearch (shops: Object[], action: any) {
   const [search, setSearch] = useState('')
 
-  setTimeout(() => {
-    action.filterShopsByName(shops, search)
-  }, 300)
+  if (search !== '') {
+    setTimeout(() => {
+      action.filterShopsByName(shops, search)
+    }, 300)
+  }
 
   return (
   <View style={styles.searchTabs}>
@@ -147,9 +149,9 @@ function renderSearch (shops: Object[], action: any) {
           />
     </View>
     <ScrollView
-    style={styles.containerTabs}
-    horizontal={true}
-    showsHorizontalScrollIndicator={false}
+      style={styles.containerTabs}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
     >
       <TouchableOpacity
       style={styles.tag}
@@ -186,13 +188,16 @@ function renderSearch (shops: Object[], action: any) {
   )
 }
 
-const Home = ({ shops, filteredShops, action }: any) => {
+const Home = ({ shops, filteredShops, action, navigation }: any) => {
   useEffect(() => {
     action.loadAllShops()
   }, [])
 
   const renderItem = ({ item }: any) => (
-    <TouchableOpacity style={styles.shopCard}>
+    <TouchableOpacity
+    style={styles.shopCard}
+    onPress={() => navigation.navigate('Shop', { item })}
+    >
       <View style= {styles.containerImage}>
           <Image
             key = {item._id}

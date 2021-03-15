@@ -26,8 +26,8 @@ async function getAllReviews(req, res) {
   }
 }
 
-async function getReviews(req, res) {
-  const query = { shopName: req.body.shopName } || { userName: req.body.userName };
+async function getReviewsByName(req, res) {
+  const query = { shopName: req.params.shopName } || { userName: req.params.userName };
   const shopReviews = await Review.find(query).exec();
 
   try {
@@ -51,7 +51,7 @@ async function deleteReview(req, res) {
 }
 
 module.exports = {
-  getReviews,
+  getReviewsByName,
   createReview,
   deleteReview,
   getAllReviews
