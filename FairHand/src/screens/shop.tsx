@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 20,
     marginLeft: 20,
-    marginRight: 20
+    marginRight: 20,
+    width: '90%'
   },
   reviewsTitle: {
     fontSize: SIZES.h2,
@@ -288,7 +289,6 @@ const Shop = ({ reviews, action, route, navigation }: any) => {
            data={reviews}
            renderItem={renderReviews}
            keyExtractor={item => item._id}
-          //  style={styles.listReviews}
            ></FlatList>
           : <Text>There are no reviews</Text>
         }

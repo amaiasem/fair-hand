@@ -40,7 +40,6 @@ export function getReviewsByShopName (searchShop) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ shopName: searchShop })
     })
-    console.log(data)
     dispatch({
       type: fairHandActionTypes.GET_REVIEWS_BY_SHOP_NAME,
       data

@@ -218,7 +218,7 @@ const Home = ({ shops, filteredShops, action, navigation }: any) => {
       {renderHeader()}
       {renderSearch(shops, action)}
       <FlatList
-        data={filteredShops}
+        data={filteredShops || shops}
         renderItem={renderItem}
         keyExtractor={item => item._id}
         style={styles.containerShops}
