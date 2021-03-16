@@ -7,6 +7,8 @@ import renderHeader from '../../Components/header/Header'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { getReviewsByShopName } from '../../redux/actions/fairHandActionCreators'
 import { bindActionCreators } from 'redux'
+import ShopInterface from '../../Interfaces/shopInterface'
+import Review from '../../Interfaces/reviewInterface'
 
 const styles = StyleSheet.create({
   container: {
@@ -187,12 +189,12 @@ const styles = StyleSheet.create({
   }
 })
 
-const Shop = ({ reviews, action, route, navigation }: any) => {
-  const [shop, setShop] = useState(null)
+const Shop = ({ reviews, action, route, navigation }:
+  {reviews: Review[], action: any, route: any, navigation: any}) => {
+  const { item }: any = route.params
+  const [shop] = useState(item)
 
   useEffect(() => {
-    const { item } = route.params
-    setShop(item)
     action.getReviewsByShopName(item.shopName)
   }, [])
 
@@ -213,16 +215,6 @@ const Shop = ({ reviews, action, route, navigation }: any) => {
             <Text style={styles.buttonText}>See on the website</Text>
           </TouchableOpacity>
         </View>
-    </View>
-  )
-
-  const renderReviews = ({ item }: any) => (
-    <View style={styles.reviewItem}>
-      <Image style={styles.reviewImage} source={{ uri: item.image }}></Image>
-      <View style={styles.reviewInfo}>
-        <Text style={styles.userNameReview}>{item.userName}</Text>
-        <Text style={styles.review}>{item.review}</Text>
-      </View>
     </View>
   )
 
@@ -257,7 +249,7 @@ const Shop = ({ reviews, action, route, navigation }: any) => {
         <Text style={styles.title}>{shop?.shopName}</Text>
         <Text style={styles.info}>{shop?.address}</Text>
         <Text style={styles.info}>{shop?.schedule}</Text>
-        <TouchableOpacity onPress={() => Linking.openURL(shop?.website)}>
+        <TouchableOpacity onPress={() => Linking.openURL(`https://${shop.website}`)}>
         <Text style={styles.web}>{shop?.website}</Text>
         </TouchableOpacity>
         <View style={styles.containerButtons}>
@@ -284,12 +276,17 @@ const Shop = ({ reviews, action, route, navigation }: any) => {
         <View style={styles.addReview}>
           <AntDesign name="edit" size={24} color="black" />
         </View>
-        {reviews
-          ? <FlatList
-           data={reviews}
-           renderItem={renderReviews}
-           keyExtractor={item => item._id}
-           ></FlatList>
+        {
+        reviews[0]
+          ? reviews.map((review: Review, index: number) => (
+              <View key={index} style={styles.reviewItem}>
+              <Image style={styles.reviewImage} source={{ uri: review.image }}></Image>
+              <View style={styles.reviewInfo}>
+                <Text style={styles.userNameReview}>{review.userName}</Text>
+                <Text style={styles.review}>{review.review}</Text>
+              </View>
+            </View>
+          ))
           : <Text>There are no reviews</Text>
         }
       </View>

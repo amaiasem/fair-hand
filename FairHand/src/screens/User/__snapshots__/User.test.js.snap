@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a component User Then should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginTop": 30,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "elevation": 4,
+        "flexDirection": "row",
+        "height": 50,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.23,
+        "shadowRadius": 2.62,
+        "width": 750,
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "height": 40,
+          "marginTop": 3,
+          "width": 150,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 0.5,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://instagram.fqsa1-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/60793471_340043599979046_7591053955213517299_n.jpg?tp=1&_nc_ht=instagram.fqsa1-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=RbfXgsjm6WgAX_p8uD1&oh=653befd6c914a74146eedf0ff34134cd&oe=607936F6",
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 80,
+          "height": 150,
+          "margin": 20,
+          "width": 150,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "fontSize": 26,
+          "fontWeight": "600",
+        }
+      }
+    >
+      Amaia Semper
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 18,
+          "fontWeight": "600",
+        }
+      }
+    >
+      amaia@gmail.com
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 0.4,
+        "justifyContent": "flex-end",
+      }
+    }
+  >
+    <RNGestureHandlerButton
+      collapsable={false}
+      onGestureEvent={[Function]}
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      onHandlerStateChange={[Function]}
+      rippleColor={0}
+    >
+      <View
+        accessible={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FF7F50",
+            "borderRadius": 25,
+            "height": 35,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "opacity": 1,
+            "width": 637.5,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 18,
+              "fontWeight": "700",
+            }
+          }
+        >
+          My favourites
+        </Text>
+      </View>
+    </RNGestureHandlerButton>
+    <RNGestureHandlerButton
+      collapsable={false}
+      onGestureEvent={[Function]}
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      onHandlerStateChange={[Function]}
+      rippleColor={0}
+    >
+      <View
+        accessible={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FF7F50",
+            "borderRadius": 25,
+            "height": 35,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "opacity": 1,
+            "width": 637.5,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 18,
+              "fontWeight": "700",
+            }
+          }
+        >
+          My reviews
+        </Text>
+      </View>
+    </RNGestureHandlerButton>
+    <RNGestureHandlerButton
+      collapsable={false}
+      onGestureEvent={[Function]}
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      onHandlerStateChange={[Function]}
+      rippleColor={0}
+    >
+      <View
+        accessible={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#262322",
+            "borderRadius": 25,
+            "height": 35,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "opacity": 1,
+            "width": 637.5,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 18,
+              "fontWeight": "700",
+            }
+          }
+        >
+          Logout
+        </Text>
+      </View>
+    </RNGestureHandlerButton>
+  </View>
+</View>
+`;
