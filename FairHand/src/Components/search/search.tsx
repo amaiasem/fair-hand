@@ -1,28 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { StyleSheet, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
-import { AntDesign } from '@expo/vector-icons'
-import { COLOR, SIZES } from '../../../constants'
+import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { COLOR, SHADOW, SIZES } from '../../../constants'
 import { filterShopsByName } from '../../redux/actions/fairHandActionCreators'
+import ShopInterface from '../../Interfaces/shopInterface'
 
 const styles = StyleSheet.create({
   searchTabs: {
     position: 'absolute',
-    height: 130,
-    top: 50,
-    backgroundColor: COLOR.white,
-    borderBottomWidth: 1,
-    borderBottomColor: COLOR.lightgrey
+    top: 60,
+    width: SIZES.width,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   containerSearch: {
     flexDirection: 'row',
-    height: 80,
-    width: SIZES.width,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLOR.white
+    width: SIZES.width * 0.9,
+    backgroundColor: COLOR.white,
+    borderRadius: SIZES.buttonRadius,
+    ...SHADOW
   },
   searchIcon: {
     width: 50,
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     height: 50,
-    width: '80%',
+    width: SIZES.width * 0.8,
     backgroundColor: COLOR.white,
     borderTopRightRadius: SIZES.buttonRadius,
     borderBottomRightRadius: SIZES.buttonRadius,
@@ -49,35 +50,23 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: COLOR.lightgrey,
     fontSize: SIZES.h2
-
   },
-  containerTabs: {
-    flex: 1,
-    flexDirection: 'row',
-    marginLeft: 10
-  },
-  tag: {
-    height: 40,
-    paddingLeft: 20,
-    paddingRight: 20,
-    marginLeft: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: COLOR.whiteGrey,
-    borderRadius: SIZES.buttonRadius,
-    fontSize: SIZES.p14
+  locationIcon: {
+    position: 'absolute',
+    top: 10,
+    right: 5,
+    color: COLOR.lightgrey
   }
-
 })
 
-function renderSearch (shops: Object[], action: any) {
+function RenderSearch ({ shops, action }: {shops: ShopInterface[], action: any}) {
   const [search, setSearch] = useState('')
 
-  if (search !== '') {
+  useEffect(() => {
     setTimeout(() => {
       action.filterShopsByName(shops, search)
     }, 300)
-  }
+  }, [search])
 
   return (
     <View style={styles.searchTabs}>
@@ -92,6 +81,7 @@ function renderSearch (shops: Object[], action: any) {
             value={search}
             testID='input-shop'
             />
+            <MaterialIcons style={styles.locationIcon} name="location-searching" size={30}/>
       </View>
     </View>
   )
@@ -110,4 +100,4 @@ function mapDispatchToProps (dispatch: any) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(renderSearch)
+export default connect(mapStateToProps, mapDispatchToProps)(RenderSearch)

@@ -7,6 +7,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { COLOR, SIZES, SHADOW2 } from '../../../constants'
 import renderHeader from '../../Components/header/Header'
 import loadAllShops, { filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
+import RenderSearch from '../../Components/search/search'
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +16,8 @@ const styles = StyleSheet.create({
   },
   map: {
     width: SIZES.width,
-    height: SIZES.height
+    height: SIZES.height,
+    zIndex: -1
   },
   userMarker: {
     width: 30,
@@ -40,6 +42,7 @@ const Maps = ({ shops, filteredShops, action }: any) => {
   return (
     <View style = {styles.container}>
       {renderHeader()}
+      <RenderSearch/>
       <MapView
       style={styles.map}
       initialRegion={{
