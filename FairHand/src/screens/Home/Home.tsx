@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import renderHeader from '../../Components/header/Header'
 import { COLOR, SIZES, SHADOW2 } from '../../../constants'
-import loadAllShops, { filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
+import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 import ShopInterface from '../../Interfaces/shopInterface'
 import RenderSearchWithFilters from '../../Components/SearchWithFilters/SearchWithFilters'
 
@@ -70,15 +70,14 @@ const styles = StyleSheet.create({
 const Home = ({ shops, filteredShops, action, navigation }:
   {shops: ShopInterface[], filteredShops: ShopInterface[], action: any, navigation: any}) => {
   useEffect(() => {
-    setTimeout(() => {
-      action.loadAllShops()
-    }, 400)
+    action.loadAllShops()
   }, [])
 
   const renderItem = ({ item }: any) => (
     <TouchableOpacity
     style={styles.shopCard}
     onPress={() => navigation.navigate('Shop', { item })}
+    testID='navigate-shop'
     >
       <View style= {styles.containerImage}>
           <Image

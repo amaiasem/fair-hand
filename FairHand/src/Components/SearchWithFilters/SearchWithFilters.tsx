@@ -74,9 +74,13 @@ function RenderSearchWithFilters ({ shops, action }: {shops: ShopInterface[], ac
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    setTimeout(() => {
-      action.filterShopsByName(shops, search)
-    }, 300)
+    if (search) {
+      setTimeout(() => {
+        action.filterShopsByName(shops, search)
+      }, 300)
+    } else {
+      action.loadAllShops()
+    }
   }, [search])
 
   return (

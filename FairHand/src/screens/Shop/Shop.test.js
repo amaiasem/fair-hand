@@ -9,7 +9,7 @@ describe('Given a component Shop', () => {
     expect(shop).toMatchSnapshot()
   })
 
-  test('Then should render correctlt', () => {
+  test('Then should render correctly', () => {
     const shop = renderer.create(<Shop/>).toJSON()
     expect(shop).toMatchSnapshot()
   })
