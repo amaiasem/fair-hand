@@ -1,7 +1,7 @@
 import fairHandActionTypes from '../actions/fairHandActionTypes'
 import initialState from '../store/initialState'
 
-export default function shopReducer (state = initialState.shopReducer, action) {
+export default function shopReducer (state = initialState.shopReducer, action: any) {
   switch (action.type) {
     case fairHandActionTypes.LOAD_ALL_SHOPS:
       return { ...state, shops: action.data, filteredShops: action.data }

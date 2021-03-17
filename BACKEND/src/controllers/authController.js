@@ -1,22 +1,30 @@
 const md5 = require('md5');
 const User = require('../models/userModel');
 
-function register(req, res) {
-  const { email, password } = req.body;
+async function register(req, res) {
+  const { name, email, password } = req.body;
+  // eslint-disable-next-line no-console
+  console.log(email);
   const user = new User({
+    name,
     email,
     password: md5(password)
   });
 
-  try {
-    user.save();
+  const userExist = await User.findOne({ email }).exec();
 
-    req.login(user, () => {
-      res.redirect('/user');
-    });
-  } catch (error) {
-    res.status(500);
-    res.send(error);
+  if (userExist) {
+    res.send('User already exists!');
+  } else {
+    try {
+      user.save();
+      req.login(user, () => {
+        res.json(user);
+      });
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
   }
 }
 

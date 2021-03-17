@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { COLOR, SIZES, images } from '../../../constants'
 import { TextInput } from 'react-native-gesture-handler'
+import { userLogin } from '../../redux/actions/fairHandActionCreators'
+import User from '../../Interfaces/userInterface'
 
 const styles = StyleSheet.create({
   container: {
@@ -59,9 +63,31 @@ const styles = StyleSheet.create({
   }
 })
 
-const Login = ({ navigation }:any) => {
+const Login = ({ user, action, navigation }: {user: User, action: any, navigation: any}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const emailRegex: any = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  const passwordRegex: any = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+
+  function validateEmailPassword (email:string, password: string) {
+    if (emailRegex.test(email) === false) {
+      alert('Please add a valid email')
+    }
+    if (passwordRegex.test(password) === false) {
+      alert('Please add a valid password! Minimum of 8 characters and at least one letter')
+    }
+    if (emailRegex.test(email) === passwordRegex.test(password)) {
+      action.userLogin(email, password)
+    }
+  }
+
+  useEffect(() => {
+    if (user.email) {
+      navigation.navigate('TabNavigator')
+    } else {
+      alert('You are not registered!')
+    }
+  }, [user.email])
 
   return (
     <View style={styles.container}>
@@ -85,6 +111,7 @@ const Login = ({ navigation }:any) => {
           onChangeText={(event) => setEmail(event)}
           placeholder='Email'
           value = {email}
+          autoCapitalize="none"
           testID='input-email'
           ></TextInput>
         <TextInput
@@ -92,11 +119,15 @@ const Login = ({ navigation }:any) => {
           onChangeText={(event) => setPassword(event)}
           placeholder='Password'
           value = {password}
+          secureTextEntry={true}
+          autoCapitalize="none"
           testID='input-password'
         ></TextInput>
         <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('TabNavigator')}
+        disabled={!email || !password}
+        onPress={() => validateEmailPassword(email, password)}
+        // onPress={() => navigation.navigate('TabNavigator')}
         >
             <Text style={styles.buttonText}>SIGN IN</Text>
         </TouchableOpacity>
@@ -105,4 +136,16 @@ const Login = ({ navigation }:any) => {
   )
 }
 
-export default Login
+function mapStateToProps (state: any) {
+  return {
+    user: state.userReducer.user
+  }
+}
+
+function mapDispatchToProps (dispatch: any) {
+  return {
+    action: bindActionCreators({ userLogin }, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -50,3 +50,40 @@ export function getReviewsByShopName (searchShop:string) {
     })
   }
 }
+
+// User actions
+
+// export function userLogin (email:string, password: string) {
+//   return async (dispatch: any) => {
+//     const { data } = await axios.post('http://192.168.0.41:5000/auth/login', {
+//       method: 'POST',
+//       data: {
+//         body: {
+//           email: email,
+//           password: password
+//         }
+//       }
+//     })
+
+//     dispatch({
+//       type: fairHandActionTypes.USER_SIGN_IN,
+//       data
+//     })
+//   }
+// }
+
+export function userRegister (user: any) {
+  return async (dispatch: any) => {
+    const { data } = await axios.post('http://192.168.0.41:5000/auth/register', user)
+    if (data === 'User already exists!') {
+      dispatch({
+        type: fairHandActionTypes.USER_REGISTER
+      })
+    } else {
+      dispatch({
+        type: fairHandActionTypes.USER_REGISTER,
+        data
+      })
+    }
+  }
+}
