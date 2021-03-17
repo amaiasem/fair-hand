@@ -7,7 +7,6 @@ import renderHeader from '../../Components/header/Header'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { getReviewsByShopName } from '../../redux/actions/fairHandActionCreators'
 import { bindActionCreators } from 'redux'
-import ShopInterface from '../../Interfaces/shopInterface'
 import Review from '../../Interfaces/reviewInterface'
 
 const styles = StyleSheet.create({
@@ -274,7 +273,7 @@ const Shop = ({ reviews, action, route, navigation }:
       <View style={styles.reviewsContainer}>
         <Text style={styles.reviewsTitle}>Reviews</Text>
         <View style={styles.addReview}>
-          <AntDesign name="edit" size={24} color="black" />
+          <AntDesign name="edit" size={24} color="black" onPress={() => navigation.navigate('AddReview', { item })}/>
         </View>
         {
         reviews[0]

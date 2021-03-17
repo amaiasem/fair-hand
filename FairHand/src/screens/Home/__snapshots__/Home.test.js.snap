@@ -39,246 +39,234 @@ exports[`Given a Connected React-Redux Home Component It should render with give
       }
     />
   </View>
-  <View
-    style={
-      Object {
-        "backgroundColor": "#fff",
-        "borderBottomColor": "#A1A1A1",
-        "borderBottomWidth": 1,
-        "height": 130,
-        "position": "absolute",
-        "top": 50,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#fff",
-          "flexDirection": "row",
-          "height": 80,
-          "justifyContent": "center",
-          "width": 750,
-        }
-      }
-    >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderBottomLeftRadius": 25,
-            "borderBottomWidth": 1,
-            "borderColor": "#A1A1A1",
-            "borderLeftWidth": 1,
-            "borderTopLeftRadius": 25,
-            "borderTopWidth": 1,
-            "height": 50,
-            "justifyContent": "center",
-            "width": 50,
-          }
-        }
-      >
-        <Text />
-      </View>
-      <TextInput
-        allowFontScaling={true}
-        collapsable={false}
-        onChangeText={[Function]}
-        onGestureHandlerEvent={[Function]}
-        onGestureHandlerStateChange={[Function]}
-        placeholder="Find a shop"
-        rejectResponderTermination={true}
-        style={
-          Object {
-            "backgroundColor": "#fff",
-            "borderBottomRightRadius": 25,
-            "borderBottomWidth": 1,
-            "borderColor": "#A1A1A1",
-            "borderRightWidth": 1,
-            "borderTopRightRadius": 25,
-            "borderTopWidth": 1,
-            "fontSize": 18,
-            "height": 50,
-            "width": "80%",
-          }
-        }
-        testID="input-shop"
-        underlineColorAndroid="transparent"
-        value=""
-      />
-    </View>
-    <RCTScrollView
-      collapsable={false}
-      horizontal={true}
-      onGestureHandlerEvent={[Function]}
-      onGestureHandlerStateChange={[Function]}
-      showsHorizontalScrollIndicator={false}
-      style={
-        Object {
-          "flex": 1,
-          "flexDirection": "row",
-          "marginLeft": 10,
-        }
-      }
-    >
-      <View>
-        <RNGestureHandlerButton
-          collapsable={false}
-          onGestureEvent={[Function]}
-          onGestureHandlerEvent={[Function]}
-          onGestureHandlerStateChange={[Function]}
-          onHandlerStateChange={[Function]}
-          rippleColor={0}
-        >
-          <View
-            accessible={true}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#EDEDED",
-                "borderRadius": 25,
-                "fontSize": 14,
-                "height": 40,
-                "justifyContent": "center",
-                "marginLeft": 5,
-                "opacity": 1,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-              }
-            }
-          >
-            <Text>
-              All
-            </Text>
-          </View>
-        </RNGestureHandlerButton>
-        <RNGestureHandlerButton
-          collapsable={false}
-          onGestureEvent={[Function]}
-          onGestureHandlerEvent={[Function]}
-          onGestureHandlerStateChange={[Function]}
-          onHandlerStateChange={[Function]}
-          rippleColor={0}
-        >
-          <View
-            accessible={true}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#EDEDED",
-                "borderRadius": 25,
-                "fontSize": 14,
-                "height": 40,
-                "justifyContent": "center",
-                "marginLeft": 5,
-                "opacity": 1,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-              }
-            }
-          >
-            <Text>
-              Clothes
-            </Text>
-          </View>
-        </RNGestureHandlerButton>
-        <RNGestureHandlerButton
-          collapsable={false}
-          onGestureEvent={[Function]}
-          onGestureHandlerEvent={[Function]}
-          onGestureHandlerStateChange={[Function]}
-          onHandlerStateChange={[Function]}
-          rippleColor={0}
-        >
-          <View
-            accessible={true}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#EDEDED",
-                "borderRadius": 25,
-                "fontSize": 14,
-                "height": 40,
-                "justifyContent": "center",
-                "marginLeft": 5,
-                "opacity": 1,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-              }
-            }
-          >
-            <Text>
-              Accessories
-            </Text>
-          </View>
-        </RNGestureHandlerButton>
-        <RNGestureHandlerButton
-          collapsable={false}
-          onGestureEvent={[Function]}
-          onGestureHandlerEvent={[Function]}
-          onGestureHandlerStateChange={[Function]}
-          onHandlerStateChange={[Function]}
-          rippleColor={0}
-        >
-          <View
-            accessible={true}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#EDEDED",
-                "borderRadius": 25,
-                "fontSize": 14,
-                "height": 40,
-                "justifyContent": "center",
-                "marginLeft": 5,
-                "opacity": 1,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-              }
-            }
-          >
-            <Text>
-              Shoes
-            </Text>
-          </View>
-        </RNGestureHandlerButton>
-        <RNGestureHandlerButton
-          collapsable={false}
-          onGestureEvent={[Function]}
-          onGestureHandlerEvent={[Function]}
-          onGestureHandlerStateChange={[Function]}
-          onHandlerStateChange={[Function]}
-          rippleColor={0}
-        >
-          <View
-            accessible={true}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#EDEDED",
-                "borderRadius": 25,
-                "fontSize": 14,
-                "height": 40,
-                "justifyContent": "center",
-                "marginLeft": 5,
-                "opacity": 1,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-              }
-            }
-          >
-            <Text>
-              Jewelry
-            </Text>
-          </View>
-        </RNGestureHandlerButton>
-      </View>
-    </RCTScrollView>
-  </View>
+  <SearchWithFilters />
   <RCTScrollView
-    data={Array []}
+    data={
+      Array [
+        Object {
+          "NewIn": Array [
+            Object {
+              "price": 119.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2059_image_4_5_front_2000x2500_crop_center.jpg?v=1614824553",
+              "productName": "INKA GOLD PANTS",
+              "url": "https://bravafabrics.com/products/inka-gold-pants",
+            },
+            Object {
+              "price": 99.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2106_image_4_5_front_b95091e0-8724-4968-ba43-e1bfa00fe416_2000x2500_crop_center.jpg?v=1614789159",
+              "productName": "MAI MAJOLICA DRESS",
+              "url": "https://bravafabrics.com/products/mai-majolica-dress",
+            },
+            Object {
+              "price": 74.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2006_image_4_5_front_28251a9e-1eb1-4b43-a8d8-b271966def02_2000x2500_crop_center.jpg?v=1614793112",
+              "productName": "ALL NDEBELE SHIRT",
+              "url": "https://bravafabrics.com/products/all-ndebele-shirt",
+            },
+          ],
+          "_id": "343junx3dr2u",
+          "address": "Parlament, 25 08015 Barcelona",
+          "coverImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/files/cartela-web-EN_fdb23f61-d5dc-49e0-98f3-71fdb8298b3e_2000x.jpg?v=1614686668",
+          "latlong": Object {
+            "lat": 41.37644,
+            "long": 2.16235,
+          },
+          "logoImage": "https://cdn.domestika.org/c_fill,dpr_auto,h_256,t_base_params.format_jpg,w_256/v1465550784/avatars/000/244/363/244363-original.png?1465550784",
+          "phone": 931277197,
+          "schedule": "Monday to Saturday 11h - 21h",
+          "shopName": "Brava Fabrics",
+          "type": Array [
+            "clothes",
+          ],
+          "website": "https://bravafabrics.com/",
+        },
+        Object {
+          "NewIn": Array [
+            Object {
+              "price": 119.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2059_image_4_5_front_2000x2500_crop_center.jpg?v=1614824553",
+              "productName": "INKA GOLD PANTS",
+              "url": "https://bravafabrics.com/products/inka-gold-pants",
+            },
+            Object {
+              "price": 99.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2106_image_4_5_front_b95091e0-8724-4968-ba43-e1bfa00fe416_2000x2500_crop_center.jpg?v=1614789159",
+              "productName": "MAI MAJOLICA DRESS",
+              "url": "https://bravafabrics.com/products/mai-majolica-dress",
+            },
+            Object {
+              "price": 74.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2006_image_4_5_front_28251a9e-1eb1-4b43-a8d8-b271966def02_2000x2500_crop_center.jpg?v=1614793112",
+              "productName": "ALL NDEBELE SHIRT",
+              "url": "https://bravafabrics.com/products/all-ndebele-shirt",
+            },
+          ],
+          "_id": "asiuduhb87",
+          "address": "Parlament, 25 08015 Barcelona",
+          "coverImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/files/cartela-web-EN_fdb23f61-d5dc-49e0-98f3-71fdb8298b3e_2000x.jpg?v=1614686668",
+          "latlong": Object {
+            "lat": 41.37644,
+            "long": 2.16235,
+          },
+          "logoImage": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+          "phone": 931277197,
+          "schedule": "Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h",
+          "shopName": "InfinitDenim",
+          "type": Array [
+            "clothes",
+          ],
+          "website": "https://bravafabrics.com/",
+        },
+        Object {
+          "NewIn": Array [
+            Object {
+              "price": 119.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2059_image_4_5_front_2000x2500_crop_center.jpg?v=1614824553",
+              "productName": "INKA GOLD PANTS",
+              "url": "https://bravafabrics.com/products/inka-gold-pants",
+            },
+            Object {
+              "price": 99.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2106_image_4_5_front_b95091e0-8724-4968-ba43-e1bfa00fe416_2000x2500_crop_center.jpg?v=1614789159",
+              "productName": "MAI MAJOLICA DRESS",
+              "url": "https://bravafabrics.com/products/mai-majolica-dress",
+            },
+            Object {
+              "price": 74.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2006_image_4_5_front_28251a9e-1eb1-4b43-a8d8-b271966def02_2000x2500_crop_center.jpg?v=1614793112",
+              "productName": "ALL NDEBELE SHIRT",
+              "url": "https://bravafabrics.com/products/all-ndebele-shirt",
+            },
+          ],
+          "_id": "assiuduhb87",
+          "address": "Parlament, 25 08015 Barcelona",
+          "coverImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/files/cartela-web-EN_fdb23f61-d5dc-49e0-98f3-71fdb8298b3e_2000x.jpg?v=1614686668",
+          "latlong": Object {
+            "lat": 41.37644,
+            "long": 2.16235,
+          },
+          "logoImage": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+          "phone": 931277197,
+          "schedule": "Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h",
+          "shopName": "InfinitDenim",
+          "type": Array [
+            "clothes",
+          ],
+          "website": "https://bravafabrics.com/",
+        },
+        Object {
+          "NewIn": Array [
+            Object {
+              "price": 119.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2059_image_4_5_front_2000x2500_crop_center.jpg?v=1614824553",
+              "productName": "INKA GOLD PANTS",
+              "url": "https://bravafabrics.com/products/inka-gold-pants",
+            },
+            Object {
+              "price": 99.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2106_image_4_5_front_b95091e0-8724-4968-ba43-e1bfa00fe416_2000x2500_crop_center.jpg?v=1614789159",
+              "productName": "MAI MAJOLICA DRESS",
+              "url": "https://bravafabrics.com/products/mai-majolica-dress",
+            },
+            Object {
+              "price": 74.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2006_image_4_5_front_28251a9e-1eb1-4b43-a8d8-b271966def02_2000x2500_crop_center.jpg?v=1614793112",
+              "productName": "ALL NDEBELE SHIRT",
+              "url": "https://bravafabrics.com/products/all-ndebele-shirt",
+            },
+          ],
+          "_id": "asiudsdsfduhb87",
+          "address": "Parlament, 25 08015 Barcelona",
+          "coverImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/files/cartela-web-EN_fdb23f61-d5dc-49e0-98f3-71fdb8298b3e_2000x.jpg?v=1614686668",
+          "latlong": Object {
+            "lat": 41.37644,
+            "long": 2.16235,
+          },
+          "logoImage": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+          "phone": 931277197,
+          "schedule": "Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h",
+          "shopName": "InfinitDenim",
+          "type": Array [
+            "clothes",
+          ],
+          "website": "https://bravafabrics.com/",
+        },
+        Object {
+          "NewIn": Array [
+            Object {
+              "price": 119.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2059_image_4_5_front_2000x2500_crop_center.jpg?v=1614824553",
+              "productName": "INKA GOLD PANTS",
+              "url": "https://bravafabrics.com/products/inka-gold-pants",
+            },
+            Object {
+              "price": 99.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2106_image_4_5_front_b95091e0-8724-4968-ba43-e1bfa00fe416_2000x2500_crop_center.jpg?v=1614789159",
+              "productName": "MAI MAJOLICA DRESS",
+              "url": "https://bravafabrics.com/products/mai-majolica-dress",
+            },
+            Object {
+              "price": 74.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2006_image_4_5_front_28251a9e-1eb1-4b43-a8d8-b271966def02_2000x2500_crop_center.jpg?v=1614793112",
+              "productName": "ALL NDEBELE SHIRT",
+              "url": "https://bravafabrics.com/products/all-ndebele-shirt",
+            },
+          ],
+          "_id": "asiudsuhfdfsb87",
+          "address": "Parlament, 25 08015 Barcelona",
+          "coverImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/files/cartela-web-EN_fdb23f61-d5dc-49e0-98f3-71fdb8298b3e_2000x.jpg?v=1614686668",
+          "latlong": Object {
+            "lat": 41.37644,
+            "long": 2.16235,
+          },
+          "logoImage": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+          "phone": 931277197,
+          "schedule": "Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h",
+          "shopName": "InfinitDenim",
+          "type": Array [
+            "clothes",
+          ],
+          "website": "https://bravafabrics.com/",
+        },
+        Object {
+          "NewIn": Array [
+            Object {
+              "price": 119.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2059_image_4_5_front_2000x2500_crop_center.jpg?v=1614824553",
+              "productName": "INKA GOLD PANTS",
+              "url": "https://bravafabrics.com/products/inka-gold-pants",
+            },
+            Object {
+              "price": 99.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2106_image_4_5_front_b95091e0-8724-4968-ba43-e1bfa00fe416_2000x2500_crop_center.jpg?v=1614789159",
+              "productName": "MAI MAJOLICA DRESS",
+              "url": "https://bravafabrics.com/products/mai-majolica-dress",
+            },
+            Object {
+              "price": 74.9,
+              "productImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2006_image_4_5_front_28251a9e-1eb1-4b43-a8d8-b271966def02_2000x2500_crop_center.jpg?v=1614793112",
+              "productName": "ALL NDEBELE SHIRT",
+              "url": "https://bravafabrics.com/products/all-ndebele-shirt",
+            },
+          ],
+          "_id": "asiuddfssuhb87",
+          "address": "Parlament, 25 08015 Barcelona",
+          "coverImage": "https://cdn.shopify.com/s/files/1/0043/0804/1831/files/cartela-web-EN_fdb23f61-d5dc-49e0-98f3-71fdb8298b3e_2000x.jpg?v=1614686668",
+          "latlong": Object {
+            "lat": 41.37644,
+            "long": 2.16235,
+          },
+          "logoImage": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+          "phone": 931277197,
+          "schedule": "Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h",
+          "shopName": "InfinitDenim",
+          "type": Array [
+            "clothes",
+          ],
+          "website": "https://bravafabrics.com/",
+        },
+      ]
+    }
     disableVirtualization={false}
     getItem={[Function]}
     getItemCount={[Function]}
@@ -308,7 +296,674 @@ exports[`Given a Connected React-Redux Home Component It should render with give
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
-    <View />
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <RNGestureHandlerButton
+          collapsable={false}
+          onGestureEvent={[Function]}
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          onHandlerStateChange={[Function]}
+          rippleColor={0}
+        >
+          <View
+            accessible={true}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderBottomWidth": 0,
+                "borderRadius": 5,
+                "elevation": 5,
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 140,
+                "marginBottom": 10,
+                "marginLeft": 5,
+                "marginRight": 5,
+                "opacity": 1,
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 10,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 5,
+                "width": 712.5,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.5,
+                  "justifyContent": "center",
+                  "marginLeft": 10,
+                  "marginRight": 5,
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://cdn.domestika.org/c_fill,dpr_auto,h_256,t_base_params.format_jpg,w_256/v1465550784/avatars/000/244/363/244363-original.png?1465550784",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 5,
+                    "height": 100,
+                    "resizeMode": "contain",
+                    "width": 100,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "flex": 1,
+                  "justifyContent": "flex-start",
+                  "marginTop": 10,
+                  "padding": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FF7F50",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                Brava Fabrics
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Parlament, 25 08015 Barcelona
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#A1A1A1",
+                    "fontSize": 14,
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                Monday to Saturday 11h - 21h
+              </Text>
+            </View>
+          </View>
+        </RNGestureHandlerButton>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <RNGestureHandlerButton
+          collapsable={false}
+          onGestureEvent={[Function]}
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          onHandlerStateChange={[Function]}
+          rippleColor={0}
+        >
+          <View
+            accessible={true}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderBottomWidth": 0,
+                "borderRadius": 5,
+                "elevation": 5,
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 140,
+                "marginBottom": 10,
+                "marginLeft": 5,
+                "marginRight": 5,
+                "opacity": 1,
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 10,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 5,
+                "width": 712.5,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.5,
+                  "justifyContent": "center",
+                  "marginLeft": 10,
+                  "marginRight": 5,
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 5,
+                    "height": 100,
+                    "resizeMode": "contain",
+                    "width": 100,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "flex": 1,
+                  "justifyContent": "flex-start",
+                  "marginTop": 10,
+                  "padding": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FF7F50",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                InfinitDenim
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Parlament, 25 08015 Barcelona
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#A1A1A1",
+                    "fontSize": 14,
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h
+              </Text>
+            </View>
+          </View>
+        </RNGestureHandlerButton>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <RNGestureHandlerButton
+          collapsable={false}
+          onGestureEvent={[Function]}
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          onHandlerStateChange={[Function]}
+          rippleColor={0}
+        >
+          <View
+            accessible={true}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderBottomWidth": 0,
+                "borderRadius": 5,
+                "elevation": 5,
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 140,
+                "marginBottom": 10,
+                "marginLeft": 5,
+                "marginRight": 5,
+                "opacity": 1,
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 10,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 5,
+                "width": 712.5,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.5,
+                  "justifyContent": "center",
+                  "marginLeft": 10,
+                  "marginRight": 5,
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 5,
+                    "height": 100,
+                    "resizeMode": "contain",
+                    "width": 100,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "flex": 1,
+                  "justifyContent": "flex-start",
+                  "marginTop": 10,
+                  "padding": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FF7F50",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                InfinitDenim
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Parlament, 25 08015 Barcelona
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#A1A1A1",
+                    "fontSize": 14,
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h
+              </Text>
+            </View>
+          </View>
+        </RNGestureHandlerButton>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <RNGestureHandlerButton
+          collapsable={false}
+          onGestureEvent={[Function]}
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          onHandlerStateChange={[Function]}
+          rippleColor={0}
+        >
+          <View
+            accessible={true}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderBottomWidth": 0,
+                "borderRadius": 5,
+                "elevation": 5,
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 140,
+                "marginBottom": 10,
+                "marginLeft": 5,
+                "marginRight": 5,
+                "opacity": 1,
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 10,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 5,
+                "width": 712.5,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.5,
+                  "justifyContent": "center",
+                  "marginLeft": 10,
+                  "marginRight": 5,
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 5,
+                    "height": 100,
+                    "resizeMode": "contain",
+                    "width": 100,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "flex": 1,
+                  "justifyContent": "flex-start",
+                  "marginTop": 10,
+                  "padding": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FF7F50",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                InfinitDenim
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Parlament, 25 08015 Barcelona
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#A1A1A1",
+                    "fontSize": 14,
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h
+              </Text>
+            </View>
+          </View>
+        </RNGestureHandlerButton>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <RNGestureHandlerButton
+          collapsable={false}
+          onGestureEvent={[Function]}
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          onHandlerStateChange={[Function]}
+          rippleColor={0}
+        >
+          <View
+            accessible={true}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderBottomWidth": 0,
+                "borderRadius": 5,
+                "elevation": 5,
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 140,
+                "marginBottom": 10,
+                "marginLeft": 5,
+                "marginRight": 5,
+                "opacity": 1,
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 10,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 5,
+                "width": 712.5,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.5,
+                  "justifyContent": "center",
+                  "marginLeft": 10,
+                  "marginRight": 5,
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 5,
+                    "height": 100,
+                    "resizeMode": "contain",
+                    "width": 100,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "flex": 1,
+                  "justifyContent": "flex-start",
+                  "marginTop": 10,
+                  "padding": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FF7F50",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                InfinitDenim
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Parlament, 25 08015 Barcelona
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#A1A1A1",
+                    "fontSize": 14,
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h
+              </Text>
+            </View>
+          </View>
+        </RNGestureHandlerButton>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <RNGestureHandlerButton
+          collapsable={false}
+          onGestureEvent={[Function]}
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          onHandlerStateChange={[Function]}
+          rippleColor={0}
+        >
+          <View
+            accessible={true}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderBottomWidth": 0,
+                "borderRadius": 5,
+                "elevation": 5,
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 140,
+                "marginBottom": 10,
+                "marginLeft": 5,
+                "marginRight": 5,
+                "opacity": 1,
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 10,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 5,
+                "width": 712.5,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 0.5,
+                  "justifyContent": "center",
+                  "marginLeft": 10,
+                  "marginRight": 5,
+                }
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://www.infinitdenim.com/wp-content/uploads/2020/05/logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 5,
+                    "height": 100,
+                    "resizeMode": "contain",
+                    "width": 100,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "flex": 1,
+                  "justifyContent": "flex-start",
+                  "marginTop": 10,
+                  "padding": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#FF7F50",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                  }
+                }
+              >
+                InfinitDenim
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Parlament, 25 08015 Barcelona
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#A1A1A1",
+                    "fontSize": 14,
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                Monday to Saturday 11h - 21h / Monday to Saturday 11h - 21h
+              </Text>
+            </View>
+          </View>
+        </RNGestureHandlerButton>
+      </View>
+    </View>
   </RCTScrollView>
 </View>
 `;

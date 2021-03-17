@@ -4,7 +4,7 @@ import ShopInterface from '../../Interfaces/shopInterface'
 
 // Shop actions
 
-export default function loadAllShops () {
+export function loadAllShops () {
   return async function fetchInfo (dispatch: any) {
     const { data } = await axios('http://192.168.0.41:5000/shops')
     dispatch({

@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Callout, Marker } from 'react-native-maps'
 import { FontAwesome5 } from '@expo/vector-icons'
-import { StyleSheet, Text, View } from 'react-native'
-import { COLOR, SIZES, SHADOW2 } from '../../../constants'
+import { StyleSheet, View, Text, Image } from 'react-native'
+import { COLOR, SIZES } from '../../../constants'
 import renderHeader from '../../Components/header/Header'
-import loadAllShops, { filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
+import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 import RenderSearch from '../../Components/search/search'
+import ShopInterface from '../../Interfaces/shopInterface'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   container: {
@@ -31,10 +33,39 @@ const styles = StyleSheet.create({
   },
   shopMarker: {
     color: COLOR.orange
+  },
+  containerCallout: {
+    height: 40,
+    width: 100,
+    backgroundColor: COLOR.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    borderRadius: SIZES.cardRadius
+  },
+  shopName: {
+    fontSize: SIZES.h2,
+    fontWeight: '700'
+  },
+  arrow: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderTopColor: COLOR.white,
+    borderWidth: 16,
+    alignSelf: 'center',
+    marginTop: -32
+  },
+  arrowBorder: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderTopColor: COLOR.black,
+    borderWidth: 16,
+    alignSelf: 'center',
+    marginTop: -0.5
   }
 })
 
-const Maps = ({ shops, filteredShops, action }: any) => {
+const Maps = ({ filteredShops, action }: {filteredShops: ShopInterface[], action: any}) => {
   useEffect(() => {
     action.loadAllShops()
   }, [])
@@ -56,7 +87,7 @@ const Maps = ({ shops, filteredShops, action }: any) => {
         >
           <View style={styles.userMarker}></View>
         </Marker>
-      {filteredShops?.map((shop: any, index: number) => (
+      {filteredShops?.map((shop: ShopInterface, index: number) => (
           <Marker
           key={index}
           coordinate={{ latitude: shop.latlong.lat, longitude: shop.latlong.long }}
@@ -64,6 +95,15 @@ const Maps = ({ shops, filteredShops, action }: any) => {
           description={shop.schedule}
           >
             <FontAwesome5 style={styles.shopMarker} name="map-marker-alt" size={40} color="black" />
+            <Callout tooltip={true}>
+              <View>
+              <View style={styles.containerCallout}>
+                <Text style={styles.shopName}>{shop.shopName}</Text>
+              </View>
+                <View style={styles.arrowBorder} />
+                <View style={styles.arrow} />
+                </View>
+            </Callout>
           </Marker>
       ))
       }
