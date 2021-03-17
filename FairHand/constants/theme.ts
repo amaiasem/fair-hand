@@ -21,6 +21,7 @@ export const SIZES = {
   p12: 12,
   p14: 14,
   p16: 16,
+  p22: 22,
   buttonText: 18,
   tagText: 12,
   cardRadius: 5,

@@ -17,27 +17,33 @@ const styles = StyleSheet.create({
     padding: 30
   },
   icon: {
-    fontSize: 50,
     color: COLOR.black
   },
   inputInfo: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 100
   },
-  titleReview: {
+  titleShop: {
     fontSize: SIZES.h1,
     fontWeight: '700',
-    alignSelf: 'flex-start',
-    marginBottom: 20,
-    marginLeft: 40
+    marginBottom: 10,
+    color: COLOR.orange
+  },
+  titleReview: {
+    fontSize: SIZES.p22,
+    fontWeight: '700',
+    marginBottom: 10
   },
   input: {
+    textAlignVertical: 'top',
     borderColor: COLOR.black,
     borderWidth: 2,
     borderRadius: SIZES.buttonRadius,
     width: SIZES.width * 0.8,
-    height: SIZES.height * 0.6
+    height: SIZES.height * 0.6,
+    padding: 20,
+    fontSize: SIZES.h2
   },
   containerButtons: {
     justifyContent: 'flex-end',
@@ -60,8 +66,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const AddReview = ({ navigation }:any) => {
+const AddReview = ({ route, navigation }:any) => {
   const [review, setReview] = useState('')
+  const { item }: any = route.params
+  const [shop] = useState(item)
 
   return (
     <View style={styles.container}>
@@ -69,19 +77,22 @@ const AddReview = ({ navigation }:any) => {
             <Ionicons
             style={styles.icon}
             name="chevron-back-circle-outline"
-            size={24}
+            size={40}
             color="black"
             onPress={() => navigation.goBack()}
             testID='go-back'
             />
       </View>
         <View style={styles.inputInfo}>
+        <Text style={styles.titleShop}>{shop?.shopName}</Text>
         <Text style={styles.titleReview}>Add your review</Text>
         <TextInput
-        style={styles.input}
-        onChangeText={(event) => setReview(event)}
-        placeholder='What would you like to share?'
-        value = {review}
+            style={styles.input}
+            onChangeText={(event) => setReview(event)}
+            placeholder='What would you like to share?'
+            numberOfLines={20}
+            multiline={true}
+            value = {review}
         ></TextInput>
         </View>
         <View style={styles.containerButtons}>

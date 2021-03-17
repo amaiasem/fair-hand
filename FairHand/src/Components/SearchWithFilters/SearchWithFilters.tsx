@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons'
 import { COLOR, SIZES } from '../../../constants'
-import loadAllShops, { filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
+import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 import ShopInterface from '../../Interfaces/shopInterface'
 
 const styles = StyleSheet.create({

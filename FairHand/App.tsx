@@ -17,7 +17,7 @@ const App = () => {
         screenOptions={{
           headerShown: false
         }}
-        initialRouteName={'AddReview'}
+        initialRouteName={'AppCover'}
         >
         <Stack.Screen name='AppCover' component={AppCover}/>
         <Stack.Screen name='Login' component={Login}/>
