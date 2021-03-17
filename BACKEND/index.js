@@ -14,7 +14,6 @@ const app = express();
 const port = process.env.PORT;
 const DDBB = process.env.DDBB_URL;
 const { IP } = process.env;
-// const { HOME } = process.env;
 
 connect(DDBB, { useNewUrlParser: true, useUnifiedTopology: true });
 

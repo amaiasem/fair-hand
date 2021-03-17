@@ -3,8 +3,7 @@ const User = require('../models/userModel');
 
 async function register(req, res) {
   const { name, email, password } = req.body;
-  // eslint-disable-next-line no-console
-  console.log(email);
+
   const user = new User({
     name,
     email,
@@ -28,9 +27,14 @@ async function register(req, res) {
   }
 }
 
-function login(req, res) {
-  res.status(200);
-  res.json(req.body);
+async function login(req, res) {
+  const { email } = req.body;
+  const user = await User.findOne({ email }).exec();
+
+  if (user) {
+    res.status(200);
+    res.json(user);
+  }
 }
 
 module.exports = { register, login };

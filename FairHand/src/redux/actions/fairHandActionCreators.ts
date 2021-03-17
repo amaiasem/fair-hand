@@ -53,26 +53,24 @@ export function getReviewsByShopName (searchShop:string) {
 
 // User actions
 
-// export function userLogin (email:string, password: string) {
-//   return async (dispatch: any) => {
-//     const { data } = await axios.post('http://192.168.0.41:5000/auth/login', {
-//       method: 'POST',
-//       data: {
-//         body: {
-//           email: email,
-//           password: password
-//         }
-//       }
-//     })
+export function userLogin (user: object) {
+  return async (dispatch: any) => {
+    try {
+      const { data } = await axios.post('http://192.168.0.41:5000/auth/login', user)
+      dispatch({
+        type: fairHandActionTypes.USER_SIGN_IN,
+        data
+      })
+    } catch (error) {
+      dispatch({
+        type: fairHandActionTypes.USER_SIGN_IN,
+        data: 400
+      })
+    }
+  }
+}
 
-//     dispatch({
-//       type: fairHandActionTypes.USER_SIGN_IN,
-//       data
-//     })
-//   }
-// }
-
-export function userRegister (user: any) {
+export function userRegister (user: object) {
   return async (dispatch: any) => {
     const { data } = await axios.post('http://192.168.0.41:5000/auth/register', user)
     if (data === 'User already exists!') {

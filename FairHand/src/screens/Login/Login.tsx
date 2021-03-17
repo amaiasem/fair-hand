@@ -77,15 +77,13 @@ const Login = ({ user, action, navigation }: {user: User, action: any, navigatio
       alert('Please add a valid password! Minimum of 8 characters and at least one letter')
     }
     if (emailRegex.test(email) === passwordRegex.test(password)) {
-      action.userLogin(email, password)
+      action.userLogin({ email, password })
     }
   }
 
   useEffect(() => {
     if (user.email) {
       navigation.navigate('TabNavigator')
-    } else {
-      alert('You are not registered!')
     }
   }, [user.email])
 

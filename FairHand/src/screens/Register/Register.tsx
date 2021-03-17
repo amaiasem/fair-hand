@@ -80,7 +80,7 @@ const Register = ({ user, action, navigation }: {user: User, action: any, naviga
       alert('Please add a valid password! Minimum of 8 characters and at least one letter')
     } else if (password === repeatPassword) {
       if (emailRegex.test(email) === true) {
-        alert('You are being registered')
+        alert('Thank you for joining Fairhand!')
         action.userRegister({ name, email, password })
       }
     }

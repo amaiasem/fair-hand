@@ -6,7 +6,7 @@ function LocalStrategy() {
   passport.use(
     new Strategy(
       {
-        useremailField: 'email',
+        usernameField: 'email',
         passwordField: 'password'
       },
       (email, password, done) => {
