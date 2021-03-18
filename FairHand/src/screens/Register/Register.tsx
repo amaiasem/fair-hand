@@ -114,7 +114,6 @@ const Register = ({ user, action, navigation }: {user: User, action: any, naviga
           onChangeText={(event) => setName(event)}
           placeholder='Name'
           value = {name}
-          testID='input-name'
           ></TextInput>
         <TextInput
           style={styles.input}
@@ -144,7 +143,8 @@ const Register = ({ user, action, navigation }: {user: User, action: any, naviga
         ></TextInput>
         <TouchableOpacity
         style={styles.button}
-        disabled={!name || !email || !password}
+        disabled={!name || !email || !password || !repeatPassword}
+        testID='valid-input'
         onPress={() => registerAndValidate(name, email, password)}>
             <Text style={styles.buttonText}>SUBMIT</Text>
         </TouchableOpacity>

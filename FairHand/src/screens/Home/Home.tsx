@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
   }
 })
 
-const Home = ({ shops, filteredShops, action, navigation }:
-  {shops: ShopInterface[], filteredShops: ShopInterface[], action: any, navigation: any}) => {
+const Home = ({ filteredShops, action, navigation }:
+  { filteredShops: ShopInterface[], action: any, navigation: any}) => {
   useEffect(() => {
     action.loadAllShops()
   }, [])

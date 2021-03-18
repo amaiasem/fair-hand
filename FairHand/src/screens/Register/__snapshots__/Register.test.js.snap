@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Given a Connected React-Redux Home Component It should render with given state from Redux store 1`] = `
+exports[`Given a component Login It should match the snapshot 1`] = `
 <Provider
   store={
     Object {
@@ -13,9 +13,10 @@ exports[`Given a Connected React-Redux Home Component It should render with give
     }
   }
 >
-  <Memo(Connect(Home))
+  <Memo(Connect(Register))
     navigation={
       Object {
+        "goBack": [MockFunction],
         "navigate": [MockFunction],
       }
     }

@@ -91,7 +91,6 @@ describe('Given a component Login', () => {
     describe('When pressing on SIGN IN with a valid password and email', () => {
       it('It should call userLogin', () => {
         const { getByTestId, getByPlaceholderText } = render(component)
-        // const spy = jest.spyOn(action, 'userLogin')
         const email = 'amaia@gmail.com'
         const password = 'a1234567'
         const inputEmail = getByTestId('input-email')
@@ -99,6 +98,7 @@ describe('Given a component Login', () => {
         fireEvent.changeText(inputEmail, email)
         fireEvent.changeText(inputPassword, password)
         fireEvent.press(getByTestId('valid-input'))
+        expect(action.userLogin).toHaveBeenCalled()
       })
 
       it('It should call navigation.navigate', () => {
@@ -111,7 +111,7 @@ describe('Given a component Login', () => {
             }
           })}><Login navigation={{ goBack, navigate }}/></Provider>)
         render(component)
-        expect(action.userLogin).toHaveBeenCalled()
+        expect(navigate).toHaveBeenCalled()
       })
     })
   })

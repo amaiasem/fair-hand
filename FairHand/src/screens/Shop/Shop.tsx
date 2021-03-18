@@ -194,7 +194,7 @@ const Shop = ({ reviews, action, route, navigation }:
   const [shop] = useState(item)
 
   useEffect(() => {
-    action.getReviewsByShopName(item.shopName)
+    action.getReviewsByShopName(item?.shopName)
   }, [])
 
   const renderItem = ({ item }: any) => (
@@ -209,6 +209,7 @@ const Shop = ({ reviews, action, route, navigation }:
             {item.price ? <Text style={styles.price}>{item.price} €</Text> : <Text></Text>}
           </View>
           <TouchableOpacity
+          testID='product-website'
           onPress= {() => { Linking.openURL(item.url) }}
           style={styles.newInbutton}>
             <Text style={styles.buttonText}>See on the website</Text>
@@ -248,11 +249,15 @@ const Shop = ({ reviews, action, route, navigation }:
         <Text style={styles.title}>{shop?.shopName}</Text>
         <Text style={styles.info}>{shop?.address}</Text>
         <Text style={styles.info}>{shop?.schedule}</Text>
-        <TouchableOpacity onPress={() => Linking.openURL(`https://${shop.website}`)}>
+        <TouchableOpacity
+        testID= 'shop-website'
+        onPress={() => Linking.openURL(`https://${shop?.website}`)}>
         <Text style={styles.web}>{shop?.website}</Text>
         </TouchableOpacity>
         <View style={styles.containerButtons}>
-          <TouchableOpacity onPress={() => Linking.openURL(`tel:${shop?.phone}`)}>
+          <TouchableOpacity
+          testID='shop-phone'
+          onPress={() => Linking.openURL(`tel:${shop?.phone}`)}>
             <Ionicons style={styles.phoneHeart} name="call-outline" size={25} color="black" />
           </TouchableOpacity>
           <TouchableOpacity>
@@ -268,12 +273,15 @@ const Shop = ({ reviews, action, route, navigation }:
           data={shop?.NewIn}
           renderItem={renderItem}
           keyExtractor={item => item._id}
+          testID='list-products'
           ></FlatList>
       </View>
       <View style={styles.reviewsContainer}>
         <Text style={styles.reviewsTitle}>Reviews</Text>
         <View style={styles.addReview}>
-          <AntDesign name="edit" size={24} color="black" onPress={() => navigation.navigate('AddReview', { item })}/>
+          <AntDesign name="edit" size={24} color="black"
+          testID='navigate-review'
+          onPress={() => navigation.navigate('AddReview', { item })}/>
         </View>
         {
         reviews[0]

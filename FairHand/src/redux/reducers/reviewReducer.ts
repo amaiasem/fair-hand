@@ -5,6 +5,8 @@ export default function reviewReducer (state = initialState.reviewReducer, actio
   switch (action.type) {
     case fairHandActionTypes.GET_REVIEWS_BY_SHOP_NAME:
       return { ...state, reviews: action.data }
+    case fairHandActionTypes.ADD_REVIEW:
+      return { ...state, reviews: action.data }
     default:
       return state
   }
