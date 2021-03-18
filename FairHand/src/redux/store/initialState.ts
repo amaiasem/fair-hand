@@ -1,5 +1,5 @@
 const initialState = {
-  // userReducer: { user: {} },
+  userReducer: { user: {} },
   shopReducer: { shops: [], shop: {}, filteredShops: [] },
   reviewReducer: { reviews: [], filteredReviews: [] }
 
