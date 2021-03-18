@@ -124,8 +124,8 @@ const Login = ({ user, action, navigation }: {user: User, action: any, navigatio
         <TouchableOpacity
         style={styles.button}
         disabled={!email || !password}
+        testID='valid-input'
         onPress={() => validateEmailPassword(email, password)}
-        // onPress={() => navigation.navigate('TabNavigator')}
         >
             <Text style={styles.buttonText}>SIGN IN</Text>
         </TouchableOpacity>

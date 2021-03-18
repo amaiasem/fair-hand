@@ -35,7 +35,7 @@ describe('Given a Connected React-Redux Home Component', () => {
     expect(component.toJSON()).toMatchSnapshot()
   })
 
-  it('Then should have three children', () => {
+  it('It should have three children', () => {
     const theComponent = component.toJSON()
     expect(theComponent.children.length).toBe(3)
   })
