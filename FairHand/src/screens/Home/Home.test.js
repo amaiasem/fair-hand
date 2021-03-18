@@ -1,6 +1,5 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import renderer from 'react-test-renderer'
 import { cleanup, fireEvent, render } from '@testing-library/react-native'
 import Home from './Home.tsx'
 import DATA from '../../../constants/DATA'
