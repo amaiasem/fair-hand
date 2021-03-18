@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, View } from 'react-native'
-import { COLOR, SIZES } from '../../../constants'
+import { COLOR, SIZES, images } from '../../../constants'
+import { addReview } from '../../redux/actions/fairHandActionCreators'
 
 const styles = StyleSheet.create({
   container: {
@@ -66,10 +69,23 @@ const styles = StyleSheet.create({
   }
 })
 
-const AddReview = ({ route, navigation }:any) => {
+const AddReview = ({ user, route, navigation, action }:any) => {
   const [review, setReview] = useState('')
   const { item }: any = route.params
   const [shop] = useState(item)
+
+  function createReview () {
+    const reviewInfo = {
+      userId: user._id,
+      userName: user.name,
+      shopName: shop.shopName,
+      image: user.image ? user.image : images.userImage,
+      review: review
+    }
+    action.addReview(reviewInfo)
+    alert(`${user.name}, the review has been succesfully sent! Thank you!`)
+    navigation.navigate('Shop', { shop })
+  }
 
   return (
     <View style={styles.container}>
@@ -96,12 +112,28 @@ const AddReview = ({ route, navigation }:any) => {
         ></TextInput>
         </View>
         <View style={styles.containerButtons}>
-            <TouchableOpacity style={styles.userButtons}>
+          <TouchableOpacity
+          style={styles.userButtons}
+          disabled={!review}
+          onPress={() => createReview()}>
             <Text style={styles.userButtonText}>Submit review</Text>
-            </TouchableOpacity>
+          </TouchableOpacity>
         </View>
     </View>
   )
 }
 
-export default AddReview
+function mapStateToProps (state: any) {
+  return {
+    user: state.userReducer.user,
+    reviews: state.reviewReducer.reviews
+  }
+}
+
+function mapDispatchToProps (dispatch: any) {
+  return {
+    action: bindActionCreators({ addReview }, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddReview)

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import fairHandActionTypes from './fairHandActionTypes'
 import ShopInterface from '../../Interfaces/shopInterface'
+import Review from '../../Interfaces/reviewInterface'
 
 // Shop actions
 
@@ -81,6 +82,23 @@ export function userRegister (user: object) {
       dispatch({
         type: fairHandActionTypes.USER_REGISTER,
         data
+      })
+    }
+  }
+}
+
+export function addReview (review: Review) {
+  return async (dispatch: any) => {
+    try {
+      const { data } = await axios.post('http://192.168.0.41:5000/reviews', review)
+      dispatch({
+        type: fairHandActionTypes.ADD_REVIEW,
+        data
+      })
+    } catch (error) {
+      dispatch({
+        type: fairHandActionTypes.ADD_REVIEW,
+        data: 400
       })
     }
   }
