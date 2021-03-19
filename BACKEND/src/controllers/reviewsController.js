@@ -26,8 +26,20 @@ async function getAllReviews(req, res) {
   }
 }
 
-async function getReviewsByName(req, res) {
-  const query = { shopName: req.params.shopName } || { userName: req.params.userName };
+async function getReviewsByShopName(req, res) {
+  const query = { shopName: req.params.shopName };
+  const shopReviews = await Review.find(query).exec();
+
+  try {
+    res.json(shopReviews);
+  } catch (error) {
+    res.status(500);
+    res.send('Could not get shop reviews');
+  }
+}
+
+async function getReviewsByUserName(req, res) {
+  const query = { userName: req.params.userName };
   const shopReviews = await Review.find(query).exec();
 
   try {
@@ -51,7 +63,8 @@ async function deleteReview(req, res) {
 }
 
 module.exports = {
-  getReviewsByName,
+  getReviewsByShopName,
+  getReviewsByUserName,
   createReview,
   deleteReview,
   getAllReviews

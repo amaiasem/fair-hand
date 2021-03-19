@@ -5,6 +5,7 @@ import Shop from './Shop/Shop'
 import AppCover from './appCover/appCover'
 import Register from '../screens/Register/Register'
 import AddReview from '../screens/AddReview/AddReview'
+import MyReviews from '../screens/MyReviews/MyReviews'
 
 export {
   Home,
@@ -13,5 +14,6 @@ export {
   AppCover,
   Login,
   Register,
-  AddReview
+  AddReview,
+  MyReviews
 }

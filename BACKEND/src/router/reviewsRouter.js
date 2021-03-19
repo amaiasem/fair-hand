@@ -12,11 +12,11 @@ function reviewsRouter() {
 
   router
     .route('/shopName/:shopName')
-    .get(reviewsController.getReviewsByName);
+    .get(reviewsController.getReviewsByShopName);
 
   router
     .route('/userName/:userName')
-    .get(reviewsController.getReviewsByName);
+    .get(reviewsController.getReviewsByUserName);
 
   return router;
 }
