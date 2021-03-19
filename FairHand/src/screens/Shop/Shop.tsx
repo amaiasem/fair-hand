@@ -195,7 +195,7 @@ const Shop = ({ reviews, action, route, navigation }:
 
   useEffect(() => {
     action.getReviewsByShopName(item?.shopName)
-  }, [])
+  }, [reviews.length])
 
   const renderItem = ({ item }: any) => (
     <View style={styles.newInItem}>

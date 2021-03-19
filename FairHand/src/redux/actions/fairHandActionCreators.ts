@@ -45,8 +45,20 @@ export function filterShopsByName (shops: ShopInterface[], shopName: string) {
 export function getReviewsByShopName (searchShop:string) {
   return async function fetchInfo (dispatch: any) {
     const { data } = await axios.get(`http://192.168.0.41:5000/reviews/shopName/${searchShop}`)
+
     dispatch({
       type: fairHandActionTypes.GET_REVIEWS_BY_SHOP_NAME,
+      data
+    })
+  }
+}
+
+export function getReviewsByUserName (searchName:string) {
+  return async function fetchInfo (dispatch: any) {
+    const { data } = await axios.get(`http://192.168.0.41:5000/reviews/userName/${searchName}`)
+
+    dispatch({
+      type: fairHandActionTypes.GET_REVIEWS_BY_USER_NAME,
       data
     })
   }

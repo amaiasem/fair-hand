@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import renderHeader from '../../Components/header/Header'
-import { COLOR, SIZES, mockUser } from '../../../constants'
+import { COLOR, SIZES, images } from '../../../constants'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import UserInterface from '../../Interfaces/userInterface'
 
 const styles = StyleSheet.create({
   container: {
@@ -58,22 +61,23 @@ const styles = StyleSheet.create({
   }
 
 })
-// const user = mockUser
 
-const User = ({ mockUser: any }) => {
+const User = ({ user, navigation, action }: {user: UserInterface, navigation: any, action: any}) => {
   return (
     <View style = {styles.container}>
       {renderHeader()}
       <View style={styles.userInfo}>
-        <Image style={styles.userImage} source={{ uri: mockUser?.image }}></Image>
-        <Text style={styles.userName}>{mockUser?.name}</Text>
-        <Text style={styles.userEmail}>{mockUser?.email}</Text>
+        <Image style={styles.userImage} source={{ uri: user.image ? user.image : images.userImage }}></Image>
+        <Text style={styles.userName}>{user?.name}</Text>
+        <Text style={styles.userEmail}>{user?.email}</Text>
       </View>
       <View style={styles.containerButtons}>
         <TouchableOpacity style={styles.userButtons}>
           <Text style={styles.userButtonText}>My favourites</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.userButtons}>
+        <TouchableOpacity
+        style={styles.userButtons}
+        onPress={() => navigation.navigate('MyReviews')}>
           <Text style={styles.userButtonText}>My reviews</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.logoutButton}>
@@ -84,4 +88,16 @@ const User = ({ mockUser: any }) => {
   )
 }
 
-export default User
+function mapStateToProps (state: any) {
+  return {
+    user: state.userReducer.user
+  }
+}
+
+function mapDispatchToProps (dispatch: any) {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(User)
