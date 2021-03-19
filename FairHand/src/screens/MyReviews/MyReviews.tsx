@@ -85,6 +85,7 @@ const MyReviews = ({ reviews, user, navigation, action }: {reviews: Review[], us
         </View>
         <TouchableOpacity
         style={styles.containerDelete}
+        testID='delete-review'
         onPress={() => action.deleteReview(reviews, item?._id)}>
             <Ionicons style={styles.trashIcon} name="trash-outline" size={20} />
         </TouchableOpacity>

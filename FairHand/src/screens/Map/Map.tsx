@@ -4,12 +4,12 @@ import { bindActionCreators } from 'redux'
 import MapView, { Callout, Marker } from 'react-native-maps'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { StyleSheet, View, Text, Image } from 'react-native'
-import { COLOR, SIZES } from '../../../constants'
+import { COLOR, SHADOW, SIZES } from '../../../constants'
 import renderHeader from '../../Components/header/Header'
 import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 import RenderSearch from '../../Components/search/search'
 import ShopInterface from '../../Interfaces/shopInterface'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   container: {
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     color: COLOR.orange
   },
   containerCallout: {
-    height: 40,
-    width: 100,
+    height: 50,
+    width: 150,
     backgroundColor: COLOR.white,
     justifyContent: 'center',
     alignItems: 'center',
@@ -58,10 +58,44 @@ const styles = StyleSheet.create({
   arrowBorder: {
     backgroundColor: 'transparent',
     borderColor: 'transparent',
-    borderTopColor: COLOR.black,
+    borderTopColor: COLOR.white,
     borderWidth: 16,
     alignSelf: 'center',
     marginTop: -0.5
+  },
+  shopList: {
+    position: 'absolute',
+    height: 150,
+    bottom: 60
+  },
+  shopCard: {
+    height: 150,
+    width: SIZES.width * 0.8,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    padding: 10,
+    borderRadius: SIZES.cardRadius,
+    backgroundColor: COLOR.white,
+    ...SHADOW
+  },
+  shopLogo: {
+    height: 80,
+    width: 80,
+    resizeMode: 'contain',
+    borderRadius: SIZES.cardRadius
+  },
+  cardInfo: {
+    padding: 10,
+    height: 150,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  cardShopName: {
+    fontWeight: '700',
+    fontSize: SIZES.p16,
+    color: COLOR.orange
   }
 })
 
@@ -97,17 +131,40 @@ const Maps = ({ filteredShops, action }: {filteredShops: ShopInterface[], action
             <FontAwesome5 style={styles.shopMarker} name="map-marker-alt" size={40} color="black" />
             <Callout tooltip={true}>
               <View>
-              <View style={styles.containerCallout}>
-                <Text style={styles.shopName}>{shop.shopName}</Text>
-              </View>
+                <View style={styles.containerCallout}>
+                  <Text style={styles.shopName}>{shop.shopName}</Text>
+                </View>
                 <View style={styles.arrowBorder} />
                 <View style={styles.arrow} />
-                </View>
+              </View>
             </Callout>
           </Marker>
       ))
       }
       </MapView>
+      <ScrollView
+      horizontal
+      style={styles.shopList}
+      showsHorizontalScrollIndicator={false}
+      scrollEventThrottle={1}>
+        {filteredShops?.map((shop: ShopInterface, index: number) => (
+        <TouchableOpacity key={index}>
+          <View style={styles.shopCard}>
+            <View>
+              <Image
+              style={styles.shopLogo}
+              source={{ uri: shop.logoImage }}></Image>
+            </View>
+            <View style={styles.cardInfo}>
+            <Text style={styles.cardShopName}>{shop.shopName}</Text>
+            <Text>{shop.address}</Text>
+            <Text>{shop.schedule}</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        ))
+      }
+      </ScrollView>
     </View>
   )
 }
