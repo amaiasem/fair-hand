@@ -115,6 +115,7 @@ const AddReview = ({ user, route, navigation, action }:any) => {
           <TouchableOpacity
           style={styles.userButtons}
           disabled={!review}
+          testID='create-review'
           onPress={() => createReview()}>
             <Text style={styles.userButtonText}>Submit review</Text>
           </TouchableOpacity>

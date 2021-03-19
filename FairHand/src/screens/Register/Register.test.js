@@ -1,7 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { cleanup, render, fireEvent } from '@testing-library/react-native'
-import renderer from 'react-test-renderer'
 import Register from './Register'
 import configureStore from 'redux-mock-store'
 import * as action from '../../redux/actions/fairHandActionCreators'
