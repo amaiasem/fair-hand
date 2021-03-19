@@ -3,5 +3,6 @@ export default interface Review {
     userName: string,
     shopName: string,
     image: string,
-    review: string
+    review: string,
+    _id: string
 }

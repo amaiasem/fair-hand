@@ -115,3 +115,24 @@ export function addReview (review: Review) {
     }
   }
 }
+
+export function deleteReview (allReviews: Review[], reviewID: Review) {
+  return async (dispatch: any) => {
+    try {
+      const { data } = await axios.delete('http://192.168.0.41:5000/reviews', {
+        data: {
+          _id: reviewID
+        }
+      })
+      dispatch({
+        type: fairHandActionTypes.DELETE_REVIEW,
+        data: { allReviews: allReviews, deleted: data }
+      })
+    } catch (error) {
+      dispatch({
+        type: fairHandActionTypes.DELETE_REVIEW,
+        data: 400
+      })
+    }
+  }
+}

@@ -6,7 +6,8 @@ import { Ionicons } from '@expo/vector-icons'
 import { COLOR, SIZES } from '../../../constants'
 import UserInterface from '../../Interfaces/userInterface'
 import Review from '../../Interfaces/reviewInterface'
-import { getReviewsByUserName } from '../../redux/actions/fairHandActionCreators'
+import { deleteReview, getReviewsByUserName } from '../../redux/actions/fairHandActionCreators'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   container: {
@@ -42,11 +43,16 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 20
   },
-  reviewInfo: {
+  containerReviewInfo: {
     marginBottom: 10,
     borderBottomColor: COLOR.lightgrey,
     borderBottomWidth: 1,
-    marginLeft: 15
+    marginLeft: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  reviewInfo: {
+    width: '90%'
   },
   shopNameReview: {
     fontWeight: '700',
@@ -56,10 +62,12 @@ const styles = StyleSheet.create({
     fontSize: SIZES.p16,
     marginBottom: 10
   },
+  containerDelete: {
+    height: 30,
+    width: 30,
+    alignItems: 'flex-end'
+  },
   trashIcon: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
     color: COLOR.lightgrey
   }
 })
@@ -70,10 +78,16 @@ const MyReviews = ({ reviews, user, navigation, action }: {reviews: Review[], us
   }, [reviews.length])
 
   const renderItem = ({ item }: any) => (
-    <View style={styles.reviewInfo}>
-        <Text style={styles.shopNameReview}>{item.shopName}</Text>
-        <Text style={styles.review}>{item.review}</Text>
-        <Ionicons style={styles.trashIcon} name="trash-outline" size={20} />
+    <View style={styles.containerReviewInfo}>
+        <View style={styles.reviewInfo}>
+            <Text style={styles.shopNameReview}>{item.shopName}</Text>
+            <Text style={styles.review}>{item.review}</Text>
+        </View>
+        <TouchableOpacity
+        style={styles.containerDelete}
+        onPress={() => action.deleteReview(reviews, item?._id)}>
+            <Ionicons style={styles.trashIcon} name="trash-outline" size={20} />
+        </TouchableOpacity>
     </View>
   )
 
@@ -95,7 +109,7 @@ const MyReviews = ({ reviews, user, navigation, action }: {reviews: Review[], us
                   ? <FlatList
                         data={reviews}
                         renderItem={renderItem}
-                        keyExtractor={item => item._id}
+                        keyExtractor={item => item?._id}
                         style={styles.reviewItem}
                         />
                   : <Text>There are no reviews</Text>
@@ -114,7 +128,7 @@ function mapStateToProps (state: any) {
 
 function mapDispatchToProps (dispatch: any) {
   return {
-    action: bindActionCreators({ getReviewsByUserName }, dispatch)
+    action: bindActionCreators({ deleteReview, getReviewsByUserName }, dispatch)
   }
 }
 
