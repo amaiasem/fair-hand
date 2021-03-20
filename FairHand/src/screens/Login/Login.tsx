@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Login = ({ user, action, navigation }: {user: User, action: any, navigation: any}) => {
+const Login = ({ user, action, navigation }: {user: User | number, action: any, navigation: any}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const emailRegex: any = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -84,8 +84,10 @@ const Login = ({ user, action, navigation }: {user: User, action: any, navigatio
   useEffect(() => {
     if (user.email) {
       navigation.navigate('TabNavigator')
+    } else if (user === 400) {
+      alert('You are not registered')
     }
-  }, [user.email])
+  }, [user])
 
   return (
     <View style={styles.container}>

@@ -125,10 +125,25 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
   const scrollViewRef = useRef()
   const onMarkerPress = (mapEventData: any) => {
     const markerID = mapEventData._targetInst.return.key
-
     const x = (markerID * (SIZES.width * 0.8)) + (markerID * 20)
 
     scrollViewRef.current.scrollTo({ x: x, y: 0, animated: true })
+  }
+
+  const mapRef = useRef(null)
+
+  function handleOnScroll (event:any) {
+    const cardIndex = parseInt(event.nativeEvent.contentOffset.x / (SIZES.width * 0.8))
+
+    mapRef.current.animateToRegion(
+      {
+        latitude: filteredShops[cardIndex].latlong.lat,
+        longitude: filteredShops[cardIndex].latlong.long,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      },
+      300
+    )
   }
 
   return (
@@ -136,6 +151,7 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
       {renderHeader()}
       <RenderSearch/>
       <MapView
+      ref={mapRef}
       style={styles.map}
       initialRegion={{
         latitude: 41.398441,
@@ -171,23 +187,24 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
       }
       </MapView>
       <Animated.ScrollView
-      ref={scrollViewRef}
-      horizontal
-      style={styles.shopList}
-      scrollEventThrottle={1}
-      pagingEnabled
-      snapToInterval={(SIZES.width * 0.8) + 20}
-      snapToAlignment="center"
-      showsHorizontalScrollIndicator={false}
-      contentInset={{
-        top: 0,
-        left: SIZES.width * 0.1 - 10,
-        bottom: 0,
-        right: SIZES.width * 0.1 - 10
-      }}
-      contentContainerStyle={{
-        paddingHorizontal: SIZES.width * 0.1 - 10
-      }}
+        onScroll={(event) => handleOnScroll(event)}
+        ref={scrollViewRef}
+        horizontal
+        style={styles.shopList}
+        scrollEventThrottle={1}
+        pagingEnabled
+        snapToInterval={(SIZES.width * 0.8) + 20}
+        snapToAlignment="center"
+        showsHorizontalScrollIndicator={false}
+        contentInset={{
+          top: 0,
+          left: SIZES.width * 0.1 - 10,
+          bottom: 0,
+          right: SIZES.width * 0.1 - 10
+        }}
+        contentContainerStyle={{
+          paddingHorizontal: SIZES.width * 0.1 - 10
+        }}
       >
         {filteredShops?.map((item: ShopInterface, index: number) => (
           <View key={index} style={styles.shopCard}>
