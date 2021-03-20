@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import MapView, { Callout, Marker } from 'react-native-maps'
 import { FontAwesome5 } from '@expo/vector-icons'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, Animated, ScrollView } from 'react-native'
 import { COLOR, SHADOW, SIZES } from '../../../constants'
 import renderHeader from '../../Components/header/Header'
 import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 import RenderSearch from '../../Components/search/search'
 import ShopInterface from '../../Interfaces/shopInterface'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+// import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   container: {
@@ -65,15 +66,16 @@ const styles = StyleSheet.create({
   },
   shopList: {
     position: 'absolute',
-    height: 150,
+    left: 0,
+    right: 0,
     bottom: 60
   },
   shopCard: {
-    height: 150,
+    height: 180,
     width: SIZES.width * 0.8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginHorizontal: 10,
     padding: 10,
     borderRadius: SIZES.cardRadius,
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
     ...SHADOW
   },
   shopLogo: {
+    marginTop: 18,
     height: 80,
     width: 80,
     resizeMode: 'contain',
@@ -89,20 +92,44 @@ const styles = StyleSheet.create({
   cardInfo: {
     padding: 10,
     height: 150,
-    justifyContent: 'flex-start',
+    width: '75%',
+    justifyContent: 'space-between',
     alignItems: 'flex-start'
   },
   cardShopName: {
     fontWeight: '700',
-    fontSize: SIZES.p16,
+    fontSize: SIZES.p22,
     color: COLOR.orange
+  },
+  button: {
+    width: 200,
+    height: 30,
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLOR.orange,
+    borderRadius: SIZES.buttonRadius
+  },
+  buttonText: {
+    color: COLOR.white,
+    fontSize: SIZES.p14,
+    fontWeight: '700'
   }
 })
 
-const Maps = ({ filteredShops, action }: {filteredShops: ShopInterface[], action: any}) => {
+const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterface[], action: any, navigation: any}) => {
   useEffect(() => {
     action.loadAllShops()
   }, [])
+
+  const scrollViewRef = useRef()
+  const onMarkerPress = (mapEventData: any) => {
+    const markerID = mapEventData._targetInst.return.key
+
+    const x = (markerID * (SIZES.width * 0.8)) + (markerID * 20)
+
+    scrollViewRef.current.scrollTo({ x: x, y: 0, animated: true })
+  }
 
   return (
     <View style = {styles.container}>
@@ -127,6 +154,7 @@ const Maps = ({ filteredShops, action }: {filteredShops: ShopInterface[], action
           coordinate={{ latitude: shop.latlong.lat, longitude: shop.latlong.long }}
           title={shop.shopName}
           description={shop.schedule}
+          onPress={(event) => onMarkerPress(event)}
           >
             <FontAwesome5 style={styles.shopMarker} name="map-marker-alt" size={40} color="black" />
             <Callout tooltip={true}>
@@ -142,29 +170,47 @@ const Maps = ({ filteredShops, action }: {filteredShops: ShopInterface[], action
       ))
       }
       </MapView>
-      <ScrollView
+      <Animated.ScrollView
+      ref={scrollViewRef}
       horizontal
       style={styles.shopList}
+      scrollEventThrottle={1}
+      pagingEnabled
+      snapToInterval={(SIZES.width * 0.8) + 20}
+      snapToAlignment="center"
       showsHorizontalScrollIndicator={false}
-      scrollEventThrottle={1}>
-        {filteredShops?.map((shop: ShopInterface, index: number) => (
-        <TouchableOpacity key={index}>
-          <View style={styles.shopCard}>
+      contentInset={{
+        top: 0,
+        left: SIZES.width * 0.1 - 10,
+        bottom: 0,
+        right: SIZES.width * 0.1 - 10
+      }}
+      contentContainerStyle={{
+        paddingHorizontal: SIZES.width * 0.1 - 10
+      }}
+      >
+        {filteredShops?.map((item: ShopInterface, index: number) => (
+          <View key={index} style={styles.shopCard}>
             <View>
               <Image
               style={styles.shopLogo}
-              source={{ uri: shop.logoImage }}></Image>
+              source={{ uri: item.logoImage }}></Image>
             </View>
             <View style={styles.cardInfo}>
-            <Text style={styles.cardShopName}>{shop.shopName}</Text>
-            <Text>{shop.address}</Text>
-            <Text>{shop.schedule}</Text>
+              <View>
+              <Text style={styles.cardShopName}>{item.shopName}</Text>
+              <Text>{item.address}</Text>
+              </View>
+              <TouchableOpacity
+             onPress={() => navigation.navigate('Shop', { item })}
+              style={styles.button}>
+                <Text style={styles.buttonText}>More info</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </TouchableOpacity>
         ))
       }
-      </ScrollView>
+      </Animated.ScrollView>
     </View>
   )
 }

@@ -1,5 +1,5 @@
 import Home from './Home/Home'
-import Maps from '../screens/Map/Map'
+import Map from '../screens/Map/Map'
 import Login from './Login/Login'
 import Shop from './Shop/Shop'
 import AppCover from './appCover/appCover'
@@ -10,7 +10,7 @@ import MyReviews from '../screens/MyReviews/MyReviews'
 export {
   Home,
   Shop,
-  Maps,
+  Map,
   AppCover,
   Login,
   Register,
