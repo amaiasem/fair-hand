@@ -71,7 +71,6 @@ describe('Given a component Header', () => {
   describe('When pressing on a shop marker', () => {
     it('It should call onMarkerPress', async () => {
       const eventMapData = {
-
         _targetInst: {
           return: {
             key: 0

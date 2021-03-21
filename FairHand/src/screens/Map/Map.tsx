@@ -7,7 +7,7 @@ import { StyleSheet, View, Text, Image, Animated, ScrollView } from 'react-nativ
 import { COLOR, SHADOW, SIZES } from '../../../constants'
 import renderHeader from '../../Components/header/Header'
 import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
-import RenderSearch from '../../Components/search/search'
+import RenderSearch from '../../Components/search/Search'
 import ShopInterface from '../../Interfaces/shopInterface'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
