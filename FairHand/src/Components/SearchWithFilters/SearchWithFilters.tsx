@@ -104,30 +104,35 @@ function RenderSearchWithFilters ({ shops, action }: {shops: ShopInterface[], ac
       >
         <TouchableOpacity
         style={styles.tag}
+        testID='all'
         onPress = {() => action.loadAllShops()}
         >
          <Text>All</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tag}
+          testID='Clothes'
           onPress={() => { action.filterShopsByType(shops, 'Clothes'); setSearch('') }}
           >
           <Text>Clothes</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tag}
+          testID='Accessories'
           onPress={() => action.filterShopsByType(shops, 'Accessories')}
           >
           <Text>Accessories</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tag}
+          testID='Shoes'
           onPress={() => action.filterShopsByType(shops, 'Shoes')}
           >
           <Text>Shoes</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tag}
+          testID='Jewelry'
           onPress={() => action.filterShopsByType(shops, 'Jewelry')}
           >
           <Text>Jewelry</Text>

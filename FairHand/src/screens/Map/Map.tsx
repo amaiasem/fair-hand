@@ -7,10 +7,9 @@ import { StyleSheet, View, Text, Image, Animated, ScrollView } from 'react-nativ
 import { COLOR, SHADOW, SIZES } from '../../../constants'
 import renderHeader from '../../Components/header/Header'
 import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
-import RenderSearch from '../../Components/search/search'
+import RenderSearch from '../../Components/search/Search'
 import ShopInterface from '../../Interfaces/shopInterface'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-// import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   container: {
@@ -171,8 +170,9 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
           title={shop.shopName}
           description={shop.schedule}
           onPress={(event) => onMarkerPress(event)}
+          testID='marker-press'
           >
-            <FontAwesome5 style={styles.shopMarker} name="map-marker-alt" size={40} color="black" />
+            <FontAwesome5 style={[styles.shopMarker]} name="map-marker-alt" size={40} color="black" />
             <Callout tooltip={true}>
               <View>
                 <View style={styles.containerCallout}>
@@ -189,6 +189,7 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
       <Animated.ScrollView
         onScroll={(event) => handleOnScroll(event)}
         ref={scrollViewRef}
+        testID='scroll-item'
         horizontal
         style={styles.shopList}
         scrollEventThrottle={1}
@@ -219,8 +220,9 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
               <Text>{item.address}</Text>
               </View>
               <TouchableOpacity
-             onPress={() => navigation.navigate('Shop', { item })}
-              style={styles.button}>
+                onPress={() => navigation.navigate('Shop', { item })}
+                testID='shop-card'
+                style={styles.button}>
                 <Text style={styles.buttonText}>More info</Text>
               </TouchableOpacity>
             </View>
