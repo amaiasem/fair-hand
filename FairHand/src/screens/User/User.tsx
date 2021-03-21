@@ -77,6 +77,7 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
         </TouchableOpacity>
         <TouchableOpacity
         style={styles.userButtons}
+        testID='navigate-myreviews'
         onPress={() => navigation.navigate('MyReviews')}>
           <Text style={styles.userButtonText}>My reviews</Text>
         </TouchableOpacity>
