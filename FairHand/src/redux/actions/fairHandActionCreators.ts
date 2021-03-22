@@ -7,7 +7,7 @@ import Review from '../../Interfaces/reviewInterface'
 
 export function loadAllShops () {
   return async function fetchInfo (dispatch: any) {
-    const { data } = await axios('http://192.168.0.41:5000/shops')
+    const { data } = await axios.get('http://192.168.0.41:5000/shops')
     dispatch({
       type: fairHandActionTypes.LOAD_ALL_SHOPS,
       data
@@ -134,5 +134,27 @@ export function deleteReview (allReviews: Review[], reviewID: Review) {
         data: 400
       })
     }
+  }
+}
+
+export function userUpdate (user: object) {
+  return async (dispatch: any) => {
+    const { data } = await axios.put('http://192.168.0.41:5000/user', user)
+    if (data === 'Could not update the user') {
+      dispatch({
+        type: fairHandActionTypes.USER_UPDATE
+      })
+    } else {
+      dispatch({
+        type: fairHandActionTypes.USER_UPDATE,
+        data
+      })
+    }
+  }
+}
+
+export function userLogout () {
+  return {
+    type: fairHandActionTypes.USER_LOGOUT
   }
 }

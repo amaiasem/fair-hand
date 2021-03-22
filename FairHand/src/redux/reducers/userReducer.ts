@@ -7,8 +7,10 @@ export default function userReducer (state = initialState.userReducer, action: a
       return { ...state, user: action.data }
     case fairHandActionTypes.USER_REGISTER:
       return { ...state, user: action.data }
-    case fairHandActionTypes.USER_SIGN_OUT:
-      return null
+    case fairHandActionTypes.USER_UPDATE:
+      return { ...state, user: action.data }
+    case fairHandActionTypes.USER_LOGOUT:
+      return { ...state, user: {} }
     default:
       return state
   }
