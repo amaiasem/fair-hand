@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { AppCover, Login, Register, Shop, AddReview, MyReviews } from './src/screens'
+import { AppCover, Login, Register, Shop, AddReview, MyReviews, MyFavourites } from './src/screens'
 import TabNavigator from './src/Components/navigation/TabNavigator'
 import { Provider } from 'react-redux'
 import store from './src/redux/store/configureStore'
@@ -24,6 +24,7 @@ const App = () => {
         <Stack.Screen name='Register' component={Register}/>
         <Stack.Screen name='AddReview' component={AddReview}/>
         <Stack.Screen name='MyReviews' component={MyReviews}/>
+        <Stack.Screen name='MyFavourites' component={MyFavourites}/>
         <Stack.Screen name='TabNavigator' component={TabNavigator}/>
         <Stack.Screen name='Shop' component={Shop}/>
       </Stack.Navigator>

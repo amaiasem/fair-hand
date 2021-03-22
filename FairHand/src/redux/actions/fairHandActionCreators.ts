@@ -152,3 +152,9 @@ export function userUpdate (user: object) {
     }
   }
 }
+
+export function userLogout () {
+  return {
+    type: fairHandActionTypes.USER_LOGOUT
+  }
+}

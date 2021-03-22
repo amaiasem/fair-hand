@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userUpdate } from '../../redux/actions/fairHandActionCreators'
+import { userUpdate, userLogout } from '../../redux/actions/fairHandActionCreators'
 import { StyleSheet, Text, View, Image, Platform, Button } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import renderHeader from '../../Components/header/Header'
@@ -107,6 +107,11 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
     setShowButton(false)
   }
 
+  function userLogoutAndRedirect () {
+    action.userLogout()
+    navigation.navigate('AppCover')
+  }
+
   return (
     <View style = {styles.container}>
       {renderHeader()}
@@ -130,7 +135,9 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
             : <Text></Text>
         }
 
-        <TouchableOpacity style={styles.userButtons}>
+        <TouchableOpacity
+        style={styles.userButtons}
+        onPress={() => navigation.navigate('MyFavourites')}>
           <Text style={styles.userButtonText}>My favourites</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -139,7 +146,9 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
         onPress={() => navigation.navigate('MyReviews')}>
           <Text style={styles.userButtonText}>My reviews</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.logoutButton}>
+        <TouchableOpacity
+        style={styles.logoutButton}
+        onPress={() => userLogoutAndRedirect()}>
           <Text style={styles.userButtonText}>Logout</Text>
         </TouchableOpacity>
       </View>
@@ -155,7 +164,7 @@ function mapStateToProps (state: any) {
 
 function mapDispatchToProps (dispatch: any) {
   return {
-    action: bindActionCreators({ userUpdate }, dispatch)
+    action: bindActionCreators({ userUpdate, userLogout }, dispatch)
   }
 }
 

@@ -6,6 +6,7 @@ import AppCover from './appCover/appCover'
 import Register from './Register/Register'
 import AddReview from './AddReview/AddReview'
 import MyReviews from './MyReviews/MyReviews'
+import MyFavourites from './MyFavourites/MyFavourites'
 
 export {
   Home,
@@ -15,5 +16,6 @@ export {
   Login,
   Register,
   AddReview,
-  MyReviews
+  MyReviews,
+  MyFavourites
 }
