@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { userUpdate } from '../../redux/actions/fairHandActionCreators'
+import { StyleSheet, Text, View, Image, Platform, Button } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 import renderHeader from '../../Components/header/Header'
 import { COLOR, SIZES, images } from '../../../constants'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import UserInterface from '../../Interfaces/userInterface'
+import * as ImagePicker from 'expo-image-picker'
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +33,11 @@ const styles = StyleSheet.create({
   userEmail: {
     fontSize: SIZES.h2,
     fontWeight: '600'
+  },
+  camera: {
+    position: 'absolute',
+    top: '60%',
+    right: '30%'
   },
   containerButtons: {
     flex: 0.4,
@@ -63,15 +71,65 @@ const styles = StyleSheet.create({
 })
 
 const User = ({ user, navigation, action }: {user: UserInterface, navigation: any, action: any}) => {
+  const [image, setImage] = useState(null)
+  const [showButton, setShowButton] = useState(false)
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!')
+        }
+      }
+    })()
+  }, [])
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1
+    })
+    if (!result.cancelled) {
+      setImage(result.uri)
+      setShowButton(true)
+    }
+  }
+
+  function updateImage () {
+    const userToUpdate = {
+      _id: user._id,
+      image: image
+    }
+    action.userUpdate(userToUpdate)
+    setShowButton(false)
+  }
+
   return (
     <View style = {styles.container}>
       {renderHeader()}
       <View style={styles.userInfo}>
-        <Image style={styles.userImage} source={{ uri: user.image ? user.image : images.userImage }}></Image>
+        <Image style={styles.userImage} source={{ uri: image || user.image || images.userImage }}></Image>
         <Text style={styles.userName}>{user?.name}</Text>
         <Text style={styles.userEmail}>{user?.email}</Text>
+        <View style={styles.camera}>
+          <Ionicons name="camera-outline" size={28} color={COLOR.orange} onPress={pickImage}/>
+        </View>
       </View>
       <View style={styles.containerButtons}>
+        {
+          showButton
+            ? <TouchableOpacity
+          disabled={!image}
+          style={styles.logoutButton}
+          onPress={() => updateImage()}>
+            <Text style={styles.userButtonText}>Update image</Text>
+          </TouchableOpacity>
+            : <Text></Text>
+        }
+
         <TouchableOpacity style={styles.userButtons}>
           <Text style={styles.userButtonText}>My favourites</Text>
         </TouchableOpacity>
@@ -97,7 +155,7 @@ function mapStateToProps (state: any) {
 
 function mapDispatchToProps (dispatch: any) {
   return {
-
+    action: bindActionCreators({ userUpdate }, dispatch)
   }
 }
 

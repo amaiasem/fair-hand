@@ -136,3 +136,19 @@ export function deleteReview (allReviews: Review[], reviewID: Review) {
     }
   }
 }
+
+export function userUpdate (user: object) {
+  return async (dispatch: any) => {
+    const { data } = await axios.put('http://192.168.0.41:5000/user', user)
+    if (data === 'Could not update the user') {
+      dispatch({
+        type: fairHandActionTypes.USER_UPDATE
+      })
+    } else {
+      dispatch({
+        type: fairHandActionTypes.USER_UPDATE,
+        data
+      })
+    }
+  }
+}
