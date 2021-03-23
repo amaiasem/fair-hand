@@ -1,10 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { COLOR, SIZES, SHADOW } from '../../../constants'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import DATA from '../../../constants/DATA'
 
 const styles = StyleSheet.create({
@@ -104,7 +101,6 @@ const MyFavourites = ({ navigation }: any) => {
         >
               <View style={styles.like}>
                 <AntDesign name="heart" size={20} color={COLOR.orange} />
-                {/* <AntDesign name="hearto" size={25} color={COLOR.orange} /> */}
               </View>
           <View style= {styles.containerImage}>
               <Image
@@ -128,8 +124,8 @@ const MyFavourites = ({ navigation }: any) => {
             name="chevron-back-circle-outline"
             size={40}
             color="black"
-            onPress={() => navigation.goBack()}
             testID='go-back'
+            onPress={() => navigation.goBack()}
             />
       </View>
       <View style={styles.myFavouritesContainer}>
@@ -146,17 +142,4 @@ const MyFavourites = ({ navigation }: any) => {
   )
 }
 
-function mapStateToProps (state: any) {
-  return {
-    user: state.userReducer.user,
-    reviews: state.reviewReducer.reviews
-  }
-}
-
-function mapDispatchToProps (dispatch: any) {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MyFavourites)
+export default MyFavourites

@@ -9,7 +9,9 @@ import {
   userLogin,
   userRegister,
   addReview,
-  deleteReview
+  deleteReview,
+  userUpdate,
+  userLogout
 } from './fairHandActionCreators.ts'
 import DATA from '../../../constants/DATA'
 const shops = DATA
@@ -242,6 +244,51 @@ describe('Given a deleteReview function', () => {
       const dispatch = jest.fn()
       await deleteReview({})(dispatch)
       expect(dispatch).toHaveBeenCalledWith(action)
+    })
+  })
+})
+
+describe('Given a userUpdate function', () => {
+  describe('When is invoked with the proper parameters', () => {
+    it('It should dispatch a type: USER_UPDATE, and data', async () => {
+      const response = {
+        data: {}
+      }
+      axios.put.mockResolvedValueOnce(response)
+      const action = {
+        type: fairHandActionTypes.USER_UPDATE,
+        data: response.data
+      }
+
+      const dispatch = jest.fn()
+      const fnc = userUpdate()
+      await fnc(dispatch)
+      expect(dispatch).toHaveBeenCalledWith(action)
+    })
+  })
+
+  describe('When is invoked without the proper parameters', () => {
+    it('It should dispatch type USER_UPDATE and 400', async () => {
+      const response = {
+        data: 'Could not update the user'
+      }
+      axios.put.mockResolvedValueOnce(response)
+      const action = {
+        type: fairHandActionTypes.USER_UPDATE
+      }
+      const dispatch = jest.fn()
+      const fnc = userUpdate()
+      await fnc(dispatch)
+      expect(dispatch).toHaveBeenCalledWith(action)
+    })
+  })
+})
+
+describe('Given a userLogout function', () => {
+  describe('When it is called', () => {
+    it('It should return USER_LOGOUT', () => {
+      const returnValue = userLogout()
+      expect(returnValue.type).toBe('USER_LOGOUT')
     })
   })
 })

@@ -33,4 +33,15 @@ describe('Given a shopReducer', () => {
       expect(shopReducer(initialState, action)).toEqual({ ...initialState, filteredShops: action.data })
     })
   })
+
+  describe('When it is called with action FILTER_SHOP_BY_NAME and data', () => {
+    it('It should return the state and action.data', () => {
+      const action = {
+        type: fairHandActionTypes.FILTER_SHOP_BY_NAME,
+        data: {}
+      }
+
+      expect(shopReducer(initialState, action)).toEqual({ ...initialState, filteredShops: action.data })
+    })
+  })
 })

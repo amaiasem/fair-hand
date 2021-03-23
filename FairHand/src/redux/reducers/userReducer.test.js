@@ -32,13 +32,25 @@ describe('Given a userReducer', () => {
     })
   })
 
-  describe('When it is called with action USER_SIGN_OUT and data', () => {
+  describe('When it is called with action USER_UPDATE and data', () => {
     it('It should return the state and action.data', () => {
       const action = {
-        type: fairHandActionTypes.USER_SIGN_OUT,
-        data: {}
+        type: fairHandActionTypes.USER_UPDATE,
+        data: {
+          name: 'John',
+          image: 'image'
+        }
       }
-      expect(userReducer(initialState, action)).toEqual(null)
+      expect(userReducer(initialState, action)).toEqual({ ...initialState, user: action.data })
+    })
+  })
+
+  describe('When it is called with action USER_LOGOUT and data', () => {
+    it('It should return the state and action.data', () => {
+      const action = {
+        type: fairHandActionTypes.USER_LOGOUT
+      }
+      expect(userReducer(initialState, action)).toEqual({ user: {} })
     })
   })
 })

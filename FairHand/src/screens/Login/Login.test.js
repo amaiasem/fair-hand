@@ -116,3 +116,47 @@ describe('Given a component Login', () => {
     })
   })
 })
+
+describe('Given a component Login', () => {
+  let store
+  let component
+  let goBack
+  let navigate
+
+  beforeEach(() => {
+    store = mockStore({
+      userReducer: { user: [] }
+    })
+    goBack = jest.fn()
+    navigate = jest.fn()
+    component = (
+      <Provider store={store}><Login navigation={{ goBack, navigate }}/></Provider>)
+  })
+
+  afterEach(() => cleanup())
+
+  describe('When pressing SIGN IN with an invalid password and email', () => {
+    it('It should call userLogin', () => {
+      const { getByTestId, getByPlaceholderText } = render(component)
+      const email = 'amaia@gmail.com'
+      const password = 'a1234567'
+      const inputEmail = getByTestId('input-email')
+      const inputPassword = getByPlaceholderText('Password')
+      fireEvent.changeText(inputEmail, email)
+      fireEvent.changeText(inputPassword, password)
+      fireEvent.press(getByTestId('valid-input'))
+      expect(action.userLogin).toHaveBeenCalled()
+    })
+
+    it('It should not call navigation.navigate', () => {
+      component = (
+        <Provider store={mockStore({
+          userReducer: {
+            user: 400
+          }
+        })}><Login navigation={{ goBack, navigate }}/></Provider>)
+      render(component)
+      expect(navigate).not.toHaveBeenCalled()
+    })
+  })
+})

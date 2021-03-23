@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
 
 const Tab = ({ onPress, icon }: any) => {
   return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
-            {icon && <AntDesign name={icon} size={24} color="black" />}
-        </TouchableOpacity>
+    <TouchableOpacity style={styles.container} onPress={onPress} testID='button-tab'>
+        {icon && <AntDesign name={icon} size={24} color="black" />}
+    </TouchableOpacity>
   )
 }
 
