@@ -6,20 +6,16 @@ import TabBar from './TabBar.tsx'
 describe('Given a component TabBar', () => {
   let component
   let navigate
-  let handlePress
 
-  const routes = [{ name: 'Home', params: { icon: 'home' } },
-    { name: 'Maps', params: { icon: 'map' } },
-    { name: 'User', params: { icon: 'user' } }]
-
-  const index = 1
+  const routes = [{ key: 1, name: 'Home', params: { icon: 'home' } },
+    { key: 2, name: 'Maps', params: { icon: 'map' } },
+    { key: 3, name: 'User', params: { icon: 'user' } }]
 
   beforeEach(() => {
     navigate = jest.fn()
-    handlePress = jest.fn()
     component = (
         <NavigationContainer>
-            <TabBar state={ { routes, index } } navigation={{ navigate }}/>
+            <TabBar state={ { routes } } navigation={{ navigate }}/>
         </NavigationContainer>
     )
   })
@@ -34,7 +30,7 @@ describe('Given a component TabBar', () => {
     it('It should call handlePress', () => {
       const { getAllByTestId } = render(component)
       fireEvent.press(getAllByTestId('button-tab')[0])
-      expect(handlePress).toHaveBeenCalled()
+      expect(navigate).toHaveBeenCalledWith('Home')
     })
   })
 })

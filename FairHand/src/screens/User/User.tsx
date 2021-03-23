@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
 })
 
 const User = ({ user, navigation, action }: {user: UserInterface, navigation: any, action: any}) => {
-  const [image, setImage] = useState(null)
-  const [showButton, setShowButton] = useState(false)
+  const [image, setImage] = React.useState(null)
+  const [showButton, setShowButton] = React.useState(false)
 
   useEffect(() => {
     (async () => {
@@ -120,7 +120,12 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
         <Text style={styles.userName}>{user?.name}</Text>
         <Text style={styles.userEmail}>{user?.email}</Text>
         <View style={styles.camera}>
-          <Ionicons name="camera-outline" size={28} color={COLOR.orange} onPress={pickImage}/>
+          <Ionicons
+          name="camera-outline"
+          size={28}
+          color={COLOR.orange}
+          onPress={pickImage}
+          testID='pickImage'/>
         </View>
       </View>
       <View style={styles.containerButtons}>
@@ -129,6 +134,7 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
             ? <TouchableOpacity
           disabled={!image}
           style={styles.logoutButton}
+          testID='update-image'
           onPress={() => updateImage()}>
             <Text style={styles.userButtonText}>Update image</Text>
           </TouchableOpacity>
@@ -137,7 +143,8 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
 
         <TouchableOpacity
         style={styles.userButtons}
-        onPress={() => navigation.navigate('MyFavourites')}>
+        onPress={() => navigation.navigate('MyFavourites')}
+        testID='navigate-myfavourites'>
           <Text style={styles.userButtonText}>My favourites</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -148,7 +155,8 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
         </TouchableOpacity>
         <TouchableOpacity
         style={styles.logoutButton}
-        onPress={() => userLogoutAndRedirect()}>
+        onPress={() => userLogoutAndRedirect()}
+        testID='logout'>
           <Text style={styles.userButtonText}>Logout</Text>
         </TouchableOpacity>
       </View>

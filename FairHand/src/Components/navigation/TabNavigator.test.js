@@ -12,20 +12,22 @@ jest.spyOn(action, 'loadAllShops').mockReturnValue({ type: '' })
 
 describe('Given a component TabNavigator', () => {
   let store
+  let component
   beforeEach(() => {
     store = mockStore({
       shopReducer: { shops: [], shop: {}, filteredShops: [] }
     })
-  })
-
-  it('renders the correct screen', async () => {
-    const { getByText } = render(
-        <Provider store={store}>
+    component = (
+      <Provider store={store}>
             <NavigationContainer>
                 <TabNavigator />
             </NavigationContainer>
         </Provider>
     )
-    await waitFor(() => getByText('Maps'))
+  })
+
+  it('renders the correct screen', () => {
+    render(component)
+    expect(component).toMatchSnapshot()
   })
 })

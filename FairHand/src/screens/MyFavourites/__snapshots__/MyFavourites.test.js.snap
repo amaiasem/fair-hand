@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a component MyFavourites It should match the snapshot 1`] = `
+<MyFavourites
+  navigation={
+    Object {
+      "goBack": [MockFunction],
+    }
+  }
+/>
+`;

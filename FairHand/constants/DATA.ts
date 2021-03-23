@@ -93,7 +93,7 @@ const DATA = [
       {
         productName: 'MAI MAJOLICA DRESS',
         productImage: 'https://cdn.shopify.com/s/files/1/0043/0804/1831/products/2106_image_4_5_front_b95091e0-8724-4968-ba43-e1bfa00fe416_2000x2500_crop_center.jpg?v=1614789159',
-        price: 99.90,
+        price: '',
         url: 'https://bravafabrics.com/products/mai-majolica-dress'
       },
       {

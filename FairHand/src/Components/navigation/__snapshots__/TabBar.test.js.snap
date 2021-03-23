@@ -10,21 +10,23 @@ exports[`Given a component TabBar It should match the snapshot 1`] = `
     }
     state={
       Object {
-        "index": 1,
         "routes": Array [
           Object {
+            "key": 1,
             "name": "Home",
             "params": Object {
               "icon": "home",
             },
           },
           Object {
+            "key": 2,
             "name": "Maps",
             "params": Object {
               "icon": "map",
             },
           },
           Object {
+            "key": 3,
             "name": "User",
             "params": Object {
               "icon": "user",

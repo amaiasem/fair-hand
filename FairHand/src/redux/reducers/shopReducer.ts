@@ -7,10 +7,10 @@ export default function shopReducer (state = initialState.shopReducer, action: a
       return { ...state, shops: action.data, filteredShops: action.data }
 
     case fairHandActionTypes.FILTER_SHOP_BY_TYPE:
-      return { ...state, filteredShops: [...action.data] }
+      return { ...state, filteredShops: action.data }
 
     case fairHandActionTypes.FILTER_SHOP_BY_NAME:
-      return { ...state, filteredShops: [...action.data] }
+      return { ...state, filteredShops: action.data }
 
     default:
       return state
