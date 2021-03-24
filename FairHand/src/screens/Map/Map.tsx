@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
-import { AnyAction, bindActionCreators } from 'redux'
+import { Dispatch, AnyAction, bindActionCreators } from 'redux'
 import MapView, { Callout, Marker } from 'react-native-maps'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { StyleSheet, View, Text, Image, Animated } from 'react-native'
 import { COLOR, SHADOW, SIZES } from '../../../constants'
-import renderHeader from '../../Components/header/Header'
+import renderHeader from '../../Components/header/renderHeader'
 import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 import RenderSearch from '../../Components/search/Search'
 import ShopInterface from '../../Interfaces/shopInterface'
@@ -122,7 +122,7 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
     action.loadAllShops()
   }, [])
 
-  const scrollViewRef = useRef()
+  const scrollViewRef = useRef<any>()
   const onMarkerPress = (mapEventData: any) => {
     const markerID = mapEventData._targetInst.return.key
     const x = (markerID * (SIZES.width * 0.8)) + (markerID * 20)
@@ -130,7 +130,7 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
     scrollViewRef.current.scrollTo({ x: x, y: 0, animated: true })
   }
 
-  const mapRef = useRef(null)
+  const mapRef = useRef<any>(null)
 
   function handleOnScroll (event:any) {
     const cardIndex = parseInt(event.nativeEvent.contentOffset.x / (SIZES.width * 0.8))
@@ -242,7 +242,7 @@ function mapStateToProps (state: any) {
   }
 }
 
-function mapDispatchToProps (dispatch: any) {
+function mapDispatchToProps (dispatch: Dispatch) {
   return {
     action: bindActionCreators({ loadAllShops, filterShopsByType, filterShopsByName }, dispatch)
   }
