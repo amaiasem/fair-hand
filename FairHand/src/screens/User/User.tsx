@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { userUpdate, userLogout } from '../../redux/actions/fairHandActionCreators'
-import { StyleSheet, Text, View, Image, Platform, Button } from 'react-native'
+import { StyleSheet, Text, View, Image, Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import renderHeader from '../../Components/header/Header'
 import { COLOR, SIZES, images } from '../../../constants'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import UserInterface from '../../Interfaces/userInterface'
 import * as ImagePicker from 'expo-image-picker'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -109,7 +110,7 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
 
   function userLogoutAndRedirect () {
     action.userLogout()
-    navigation.navigate('AppCover')
+    navigation.navigate(Screen.AppCover)
   }
 
   return (
@@ -143,14 +144,14 @@ const User = ({ user, navigation, action }: {user: UserInterface, navigation: an
 
         <TouchableOpacity
         style={styles.userButtons}
-        onPress={() => navigation.navigate('MyFavourites')}
+        onPress={() => navigation.navigate(Screen.MyFavourites)}
         testID='navigate-myfavourites'>
           <Text style={styles.userButtonText}>My favourites</Text>
         </TouchableOpacity>
         <TouchableOpacity
         style={styles.userButtons}
         testID='navigate-myreviews'
-        onPress={() => navigation.navigate('MyReviews')}>
+        onPress={() => navigation.navigate(Screen.MyReviews)}>
           <Text style={styles.userButtonText}>My reviews</Text>
         </TouchableOpacity>
         <TouchableOpacity

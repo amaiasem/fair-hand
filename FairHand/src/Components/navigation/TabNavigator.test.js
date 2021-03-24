@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, waitFor } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import TabNavigator from './TabNavigator.tsx'
 import configureStore from 'redux-mock-store'
 import { NavigationContainer } from '@react-navigation/native'
@@ -19,10 +19,10 @@ describe('Given a component TabNavigator', () => {
     })
     component = (
       <Provider store={store}>
-            <NavigationContainer>
-                <TabNavigator />
-            </NavigationContainer>
-        </Provider>
+        <NavigationContainer>
+            <TabNavigator />
+        </NavigationContainer>
+      </Provider>
     )
   })
 

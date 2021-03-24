@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { AnyAction, bindActionCreators } from 'redux'
 import MapView, { Callout, Marker } from 'react-native-maps'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { StyleSheet, View, Text, Image, Animated } from 'react-native'
@@ -10,6 +10,7 @@ import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/
 import RenderSearch from '../../Components/search/Search'
 import ShopInterface from '../../Interfaces/shopInterface'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterface[], action: any, navigation: any}) => {
+const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterface[], action: AnyAction, navigation: any}) => {
   useEffect(() => {
     action.loadAllShops()
   }, [])
@@ -220,7 +221,7 @@ const Maps = ({ filteredShops, action, navigation }: {filteredShops: ShopInterfa
               <Text>{item.address}</Text>
               </View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('Shop', { item })}
+                onPress={() => navigation.navigate(Screen.Shop, { item })}
                 testID='shop-card'
                 style={styles.button}>
                 <Text style={styles.buttonText}>More info</Text>

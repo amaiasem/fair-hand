@@ -6,6 +6,7 @@ import { AppCover, Login, Register, Shop, AddReview, MyReviews, MyFavourites } f
 import TabNavigator from './src/Components/navigation/TabNavigator'
 import { Provider } from 'react-redux'
 import store from './src/redux/store/configureStore'
+import Screen from './constants/ScreenConstants'
 
 const Stack = createStackNavigator()
 
@@ -17,16 +18,16 @@ const App = () => {
         screenOptions={{
           headerShown: false
         }}
-        initialRouteName={'AppCover'}
+        initialRouteName={Screen.AppCover}
         >
-        <Stack.Screen name='AppCover' component={AppCover}/>
-        <Stack.Screen name='Login' component={Login}/>
-        <Stack.Screen name='Register' component={Register}/>
-        <Stack.Screen name='AddReview' component={AddReview}/>
-        <Stack.Screen name='MyReviews' component={MyReviews}/>
-        <Stack.Screen name='MyFavourites' component={MyFavourites}/>
-        <Stack.Screen name='TabNavigator' component={TabNavigator}/>
-        <Stack.Screen name='Shop' component={Shop}/>
+        <Stack.Screen name={Screen.AppCover} component={AppCover}/>
+        <Stack.Screen name={Screen.Login} component={Login}/>
+        <Stack.Screen name={Screen.Register} component={Register}/>
+        <Stack.Screen name={Screen.AddReview} component={AddReview}/>
+        <Stack.Screen name={Screen.MyReviews} component={MyReviews}/>
+        <Stack.Screen name={Screen.MyFavourites} component={MyFavourites}/>
+        <Stack.Screen name={Screen.TabNavigator} component={TabNavigator}/>
+        <Stack.Screen name={Screen.Shop} component={Shop}/>
       </Stack.Navigator>
     </NavigationContainer>
   </Provider>

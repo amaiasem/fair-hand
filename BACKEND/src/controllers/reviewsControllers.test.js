@@ -1,4 +1,10 @@
-const { getAllReviews, createReview, deleteReview } = require('./reviewsController');
+const {
+  getAllReviews,
+  createReview,
+  deleteReview,
+  getReviewsByShopName,
+  getReviewsByUserName
+} = require('./reviewsController');
 
 const Review = require('../models/reviewsModel');
 
@@ -52,6 +58,60 @@ describe('Given a function getAllReviews', () => {
     Review.find.mockReturnValueOnce(() => { throw new Error('Could not find the reviews'); });
 
     await getAllReviews(req, res);
+
+    expect(res.send).toHaveBeenCalled();
+  });
+});
+
+describe('Given a function getReviewsByShopName', () => {
+  let req;
+  let res;
+
+  beforeEach(() => {
+    res = { status: jest.fn(), send: jest.fn(), json: jest.fn() };
+  });
+
+  test('Then should call res.json', async () => {
+    req = { params: { shopName: 'Brava' } };
+    Review.find.mockReturnValueOnce({ exec: jest.fn() });
+
+    await getReviewsByShopName(req, res);
+
+    expect(res.json).toHaveBeenCalled();
+  });
+
+  test('Then should call res.send', async () => {
+    req = { params: { shopName: null } };
+    Review.find.mockImplementationOnce(() => { throw new Error('Could not get shop reviews'); });
+
+    await getReviewsByShopName(req, res);
+
+    expect(res.send).toHaveBeenCalled();
+  });
+});
+
+describe('Given a function getReviewsByUserName', () => {
+  let req;
+  let res;
+
+  beforeEach(() => {
+    res = { status: jest.fn(), send: jest.fn(), json: jest.fn() };
+  });
+
+  test('Then should call res.json', async () => {
+    req = { params: { userName: 'Amaia' } };
+    Review.find.mockReturnValueOnce({ exec: jest.fn() });
+
+    await getReviewsByUserName(req, res);
+
+    expect(res.json).toHaveBeenCalled();
+  });
+
+  test('Then should call res.send', async () => {
+    req = { params: { userName: null } };
+    Review.find.mockImplementationOnce(() => { throw new Error('Could not get shop reviews'); });
+
+    await getReviewsByUserName(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });

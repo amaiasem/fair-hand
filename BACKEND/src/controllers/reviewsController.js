@@ -28,9 +28,9 @@ async function getAllReviews(req, res) {
 
 async function getReviewsByShopName(req, res) {
   const query = { shopName: req.params.shopName };
-  const shopReviews = await Review.find(query).exec();
 
   try {
+    const shopReviews = await Review.find(query).exec();
     res.json(shopReviews);
   } catch (error) {
     res.status(500);
@@ -40,9 +40,9 @@ async function getReviewsByShopName(req, res) {
 
 async function getReviewsByUserName(req, res) {
   const query = { userName: req.params.userName };
-  const shopReviews = await Review.find(query).exec();
 
   try {
+    const shopReviews = await Review.find(query).exec();
     res.json(shopReviews);
   } catch (error) {
     res.status(500);
