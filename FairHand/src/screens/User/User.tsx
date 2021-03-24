@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { bindActionCreators, Dispatch } from 'redux'
 import { userUpdate, userLogout } from '../../redux/actions/fairHandActionCreators'
 import { StyleSheet, Text, View, Image, Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import renderHeader from '../../Components/header/Header'
+import renderHeader from '../../Components/header/renderHeader'
 import { COLOR, SIZES, images } from '../../../constants'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import UserInterface from '../../Interfaces/userInterface'
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 })
 
 const User = ({ user, navigation, action }: {user: UserInterface, navigation: any, action: any}) => {
-  const [image, setImage] = React.useState(null)
+  const [image, setImage] = React.useState<string | null>(null)
   const [showButton, setShowButton] = React.useState(false)
 
   useEffect(() => {
@@ -171,7 +171,7 @@ function mapStateToProps (state: any) {
   }
 }
 
-function mapDispatchToProps (dispatch: any) {
+function mapDispatchToProps (dispatch: Dispatch) {
   return {
     action: bindActionCreators({ userUpdate, userLogout }, dispatch)
   }

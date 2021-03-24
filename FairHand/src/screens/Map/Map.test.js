@@ -67,26 +67,4 @@ describe('Given a component Map', () => {
       )
     })
   })
-
-  describe('When pressing on a Marker', () => {
-    it('It should call onMarkerPress', async () => {
-      const e = new Event('build')
-      // const e = new Event   x{
-      //   mapEventData: {
-      //     _targetInst: {
-      //       return: {
-      //         key: 2
-      //       }
-      //     }
-      //   }
-      // }
-
-      const { getAllByTestId, getByTestId } = render(component)
-
-      await fireEvent.press(getAllByTestId('marker-press')[2], e)
-      // const scrollItemsArray = getByTestId('scroll-item')
-      // expect(scrollItemsArray.props.nativeEvent.contentOffset.x).toBe(2)
-      expect(onMarkerPress).toHaveBeenCalled()
-    })
-  })
 })
