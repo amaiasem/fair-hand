@@ -8,6 +8,7 @@ import { COLOR, SIZES, SHADOW2 } from '../../../constants'
 import { loadAllShops, filterShopsByType, filterShopsByName } from '../../redux/actions/fairHandActionCreators'
 import ShopInterface from '../../Interfaces/shopInterface'
 import RenderSearchWithFilters from '../../Components/SearchWithFilters/SearchWithFilters'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -76,7 +77,7 @@ const Home = ({ filteredShops, action, navigation }:
   const renderItem = ({ item }: any) => (
     <TouchableOpacity
     style={styles.shopCard}
-    onPress={() => navigation.navigate('Shop', { item })}
+    onPress={() => navigation.navigate(Screen.Shop, { item })}
     testID='navigate-shop'
     >
       <View style= {styles.containerImage}>

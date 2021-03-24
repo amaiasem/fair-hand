@@ -7,6 +7,7 @@ import { COLOR, SIZES, images } from '../../../constants'
 import { TextInput } from 'react-native-gesture-handler'
 import { userLogin } from '../../redux/actions/fairHandActionCreators'
 import User from '../../Interfaces/userInterface'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -83,7 +84,7 @@ const Login = ({ user, action, navigation }: {user: User | number, action: any, 
 
   useEffect(() => {
     if (user.email) {
-      navigation.navigate('TabNavigator')
+      navigation.navigate(Screen.TabNavigator)
     } else if (user === 400) {
       alert('You are not registered')
     }

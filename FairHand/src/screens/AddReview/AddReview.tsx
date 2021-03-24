@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, View } from 'react-native'
 import { COLOR, SIZES, images } from '../../../constants'
 import { addReview } from '../../redux/actions/fairHandActionCreators'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -84,7 +85,7 @@ const AddReview = ({ user, route, navigation, action }:any) => {
     }
     action.addReview(reviewInfo)
     alert(`${user.name}, the review has been succesfully sent! Thank you!`)
-    navigation.navigate('Shop', { shop })
+    navigation.navigate(Screen.Shop, { shop })
   }
 
   return (

@@ -7,6 +7,7 @@ import { COLOR, SIZES, images } from '../../../constants'
 import { TextInput } from 'react-native-gesture-handler'
 import { userRegister } from '../../redux/actions/fairHandActionCreators'
 import User from '../../Interfaces/userInterface'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -88,7 +89,7 @@ const Register = ({ user, action, navigation }: {user: User, action: any, naviga
 
   useEffect(() => {
     if (user.email) {
-      navigation.navigate('TabNavigator')
+      navigation.navigate(Screen.TabNavigator)
     }
   }, [user.email])
 

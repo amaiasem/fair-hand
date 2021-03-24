@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { COLOR, SIZES, images } from '../../../constants'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -57,13 +58,13 @@ const AppCover = ({ navigation }: any) => {
       <TouchableOpacity
       testID='login-button'
       style={styles.button}
-      onPress = {() => navigation.navigate('Login')}
+      onPress = {() => navigation.navigate(Screen.Login)}
       >
         <Text style={styles.buttonText}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity
       style={styles.button }
-      onPress = {() => navigation.navigate('Register')}
+      onPress = {() => navigation.navigate(Screen.Register)}
       >
         <Text style={styles.buttonText}>SIGN UP</Text>
       </TouchableOpacity>

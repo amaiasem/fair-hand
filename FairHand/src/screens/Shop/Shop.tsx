@@ -8,6 +8,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { getReviewsByShopName } from '../../redux/actions/fairHandActionCreators'
 import { bindActionCreators } from 'redux'
 import Review from '../../Interfaces/reviewInterface'
+import Screen from '../../../constants/ScreenConstants'
 
 const styles = StyleSheet.create({
   container: {
@@ -281,7 +282,7 @@ const Shop = ({ reviews, action, route, navigation }:
         <View style={styles.addReview}>
           <AntDesign name="edit" size={24} color="black"
           testID='navigate-review'
-          onPress={() => navigation.navigate('AddReview', { item })}/>
+          onPress={() => navigation.navigate(Screen.AddReview, { item })}/>
         </View>
         {
         reviews[0]

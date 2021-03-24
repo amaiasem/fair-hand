@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Given a component Header It should match the snapshot 1`] = `
+exports[`Given a component Map It should match the snapshot 1`] = `
 <Provider
   store={
     Object {

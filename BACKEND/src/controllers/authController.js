@@ -31,10 +31,8 @@ async function login(req, res) {
   const { email } = req.body;
   const user = await User.findOne({ email }).exec();
 
-  if (user) {
-    res.status(200);
-    res.json(user);
-  }
+  res.status(200);
+  res.json(user);
 }
 
 module.exports = { register, login };

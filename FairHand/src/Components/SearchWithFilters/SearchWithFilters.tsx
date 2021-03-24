@@ -91,7 +91,7 @@ function RenderSearchWithFilters ({ shops, action }: {shops: ShopInterface[], ac
         </View>
           <TextInput
             style={styles.searchInput}
-            onChangeText={(search) => setSearch(search)}
+            onChangeText={(text) => setSearch(text)}
             placeholder='Find a shop'
             value={search}
             testID='input-shop'
