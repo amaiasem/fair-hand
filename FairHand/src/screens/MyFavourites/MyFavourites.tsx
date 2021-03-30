@@ -2,7 +2,7 @@ import React from 'react'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
 import { COLOR, SIZES, SHADOW } from '../../../constants'
-import DATA from '../../../constants/DATA'
+import shopsD from '../../../constants/shopsD'
 
 const styles = StyleSheet.create({
   container: {
@@ -131,7 +131,7 @@ const MyFavourites = ({ navigation }: any) => {
       <View style={styles.myFavouritesContainer}>
         <Text style={styles.titleMyFavourites}>My Favourites</Text>
         <FlatList
-            data={DATA}
+            data={shopsD}
             renderItem={renderItem}
             keyExtractor={item => item._id}
             style={styles.containerShops}

@@ -21,6 +21,7 @@
       "!**/fairHandActionTypes.ts/**",
       "!**/configureStore.ts/**",
       "!**/reducers/index.ts/**",
+      "!**/App.tsx/**",
       "!**/constants/index.ts/**",
       "!**/node_modules/**",
       "!**/react-native.config.js/**",
