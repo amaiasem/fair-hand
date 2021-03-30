@@ -17,7 +17,6 @@ describe('Given a component Map', () => {
   let component
   let navigate
   let handleOnScroll
-  let onMarkerPress
 
   beforeEach(() => {
     store = mockStore({
@@ -25,7 +24,6 @@ describe('Given a component Map', () => {
     })
     navigate = jest.fn()
     handleOnScroll = jest.fn()
-    onMarkerPress = jest.fn()
     component = (
       <Provider store={store}>
         <Map navigation={{ navigate }}/>
