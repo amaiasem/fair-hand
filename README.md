@@ -1,5 +1,5 @@
 
-#FAIR HAND - REACT NATIVE APPLICATION PROJECT
+# FAIR HAND - REACT NATIVE APPLICATION PROJECT
 
 FairHand is an App where you can register and search for sustainable fashion stores within a map, by product type or by store name, add reviews and update your profile.
 
