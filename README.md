@@ -21,19 +21,19 @@ _Open both, backend and frontend folders and run in the terminal_
 npm install
 ```
 
-_and then run_
+_and then_
 
 ```
 npm start
 ```
 
 
-### Coverage ⌨️
+### Coverage ⌨️ Jest
 
 _You can check the project code coverage running in the console_
 
 ```
-npm t
+npm test
 ```
 
 ![Coverage_front_FairHand](https://user-images.githubusercontent.com/34269801/113022690-26a5a580-9185-11eb-9ef8-fa18a109cd27.PNG)
@@ -43,8 +43,9 @@ npm t
 
 ## Technologies 🛠️
 
-* [React Native] (https://reactnative.dev/) 
-* [React Native Maps](https://github.com/react-native-maps/react-native-maps) - Used to add a MapView and the store markers.
+* [React Native](https://reactnative.dev/) 
+* [React Native Maps](https://github.com/react-native-maps/react-native-maps) - Used to add a map in the application and locate the stores.
+* [Redux](https://redux.js.org/)
 
 
 ## Thanks to 🎁
@@ -55,4 +56,4 @@ npm t
 
 
 ---
-⌨️ with ❤️ by [Amaia Sémper](https://github.com/amaiasem) 😊
+⌨️ with ❤️ [Amaia Sémper](https://github.com/amaiasem) 😊
