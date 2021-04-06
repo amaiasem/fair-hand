@@ -295,7 +295,7 @@ const Shop = ({ reviews, action, route, navigation }:
               </View>
             </View>
           ))
-          : <Text>There are no reviews</Text>
+          : <Text>There are no reviews available</Text>
         }
       </View>
     </View>
