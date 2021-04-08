@@ -2,12 +2,20 @@ import axios from 'axios'
 import fairHandActionTypes from './fairHandActionTypes'
 import ShopInterface from '../../Interfaces/shopInterface'
 import Review from '../../Interfaces/reviewInterface'
+import config from './../../../config'
 
-// Shop actions
+/**
+ * Description. Shop actions
+ * 1. Load all shops available at the API
+ * 2. Filter shops by type of product they sell
+ * 3. Filter shops by name
+ *
+ * @return Returns an array of objects.
+ */
 
 export function loadAllShops () {
   return async function fetchInfo (dispatch: any) {
-    const { data } = await axios.get('http://192.168.1.37:5000/shops')
+    const { data } = await axios.get(`${config.API_URL}/shops`)
     dispatch({
       type: fairHandActionTypes.LOAD_ALL_SHOPS,
       data
@@ -44,7 +52,7 @@ export function filterShopsByName (shops: ShopInterface[], shopName: string) {
 
 export function getReviewsByShopName (searchShop:string) {
   return async function fetchInfo (dispatch: any) {
-    const { data } = await axios.get(`http://192.168.1.37:5000/reviews/shopName/${searchShop}`)
+    const { data } = await axios.get(`${config.API_URL}/reviews/shopName/${searchShop}`)
 
     dispatch({
       type: fairHandActionTypes.GET_REVIEWS_BY_SHOP_NAME,
@@ -55,7 +63,7 @@ export function getReviewsByShopName (searchShop:string) {
 
 export function getReviewsByUserName (searchName:string) {
   return async function fetchInfo (dispatch: any) {
-    const { data } = await axios.get(`http://192.168.1.37:5000/reviews/userName/${searchName}`)
+    const { data } = await axios.get(`${config.API_URL}/reviews/userName/${searchName}`)
     dispatch({
       type: fairHandActionTypes.GET_REVIEWS_BY_USER_NAME,
       data
@@ -68,7 +76,7 @@ export function getReviewsByUserName (searchName:string) {
 export function userLogin (user: object) {
   return async (dispatch: any) => {
     try {
-      const { data } = await axios.post('http://192.168.1.37:5000/auth/login', user)
+      const { data } = await axios.post(`${config.API_URL}/auth/login`, user)
       dispatch({
         type: fairHandActionTypes.USER_SIGN_IN,
         data
@@ -84,7 +92,7 @@ export function userLogin (user: object) {
 
 export function userRegister (user: object) {
   return async (dispatch: any) => {
-    const { data } = await axios.post('http://192.168.1.37:5000/auth/register', user)
+    const { data } = await axios.post(`${config.API_URL}/auth/register`, user)
     if (data === 'User already exists!') {
       dispatch({
         type: fairHandActionTypes.USER_REGISTER
@@ -101,7 +109,7 @@ export function userRegister (user: object) {
 export function addReview (review: Review) {
   return async (dispatch: any) => {
     try {
-      const { data } = await axios.post('http://192.168.1.37:5000/reviews', review)
+      const { data } = await axios.post(`${config.API_URL}/reviews`, review)
       dispatch({
         type: fairHandActionTypes.ADD_REVIEW,
         data
@@ -118,7 +126,7 @@ export function addReview (review: Review) {
 export function deleteReview (allReviews: Review[], reviewID: Review) {
   return async (dispatch: any) => {
     try {
-      const { data } = await axios.delete('http:/192.168.1.37:5000/reviews', {
+      const { data } = await axios.delete(`${config.API_URL}/reviews`, {
         data: {
           _id: reviewID
         }
@@ -138,7 +146,7 @@ export function deleteReview (allReviews: Review[], reviewID: Review) {
 
 export function userUpdate (user: object) {
   return async (dispatch: any) => {
-    const { data } = await axios.put('http://192.168.1.37:5000/user', user)
+    const { data } = await axios.put(`${config.API_URL}/user`, user)
     if (data === 'Could not update the user') {
       dispatch({
         type: fairHandActionTypes.USER_UPDATE
